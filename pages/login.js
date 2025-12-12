@@ -6,11 +6,13 @@ import { useRouter } from 'next/router';
 
 import Layout from '../components/Layout';
 import Styles from './form.module.scss';
+import { useNotification } from '../components/NotificationProvider';
 
 const Login = () => {
 	const { data: session } = useSession();
 	const router = useRouter();
 	const { redirect } = router.query;
+	const { showError } = useNotification();
 
 	useEffect(() => {
 		if (session?.user) {
@@ -32,10 +34,10 @@ const Login = () => {
 				password,
 			});
 			if (result.error) {
-				alert(result.error);
+				showError(result.error || 'Invalid credentials');
 			}
 		} catch (err) {
-			alert(err);
+			showError(err.message || 'An error occurred during login');
 		}
 	};
 

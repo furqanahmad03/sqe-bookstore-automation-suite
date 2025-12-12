@@ -1,0 +1,251 @@
+.dashboard {
+	padding: 2rem 0;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 2px solid #e0e0e0;
+
+		h2 {
+			margin: 0;
+			font-size: 2rem;
+			color: #333;
+		}
+	}
+
+	.tabs {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+		border-bottom: 2px solid #e0e0e0;
+
+		.tab {
+			padding: 0.75rem 1.5rem;
+			border: none;
+			background: transparent;
+			color: #666;
+			font-size: 1rem;
+			font-weight: 500;
+			cursor: pointer;
+			position: relative;
+			transition: all 0.3s ease;
+
+			&:hover {
+				color: #0070f3;
+			}
+
+			&.active {
+				color: #0070f3;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: -2px;
+					left: 0;
+					right: 0;
+					height: 2px;
+					background: #0070f3;
+				}
+			}
+		}
+	}
+
+	.section_header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+
+		h3 {
+			margin: 0;
+			font-size: 1.5rem;
+			color: #333;
+		}
+
+		.add_button {
+			padding: 0.75rem 1.5rem;
+			background: #0070f3;
+			color: white;
+			border: none;
+			border-radius: 6px;
+			font-size: 1rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.3s ease;
+
+			&:hover {
+				background: #0051cc;
+			}
+		}
+	}
+
+	.form_card {
+		background: white;
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+		h3 {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+			font-size: 1.5rem;
+			color: #333;
+		}
+
+		.form_actions {
+			display: flex;
+			gap: 1rem;
+			margin-top: 1.5rem;
+
+			button {
+				flex: 1;
+			}
+
+			.cancel_button {
+				background: #6c757d;
+				color: white;
+
+				&:hover {
+					background: #5a6268;
+				}
+			}
+		}
+	}
+
+	.loading {
+		text-align: center;
+		padding: 3rem;
+		color: #666;
+		font-size: 1.1rem;
+	}
+
+	.error {
+		background: #fee;
+		color: #c33;
+		padding: 1rem;
+		border-radius: 6px;
+		margin-bottom: 1rem;
+		border: 1px solid #fcc;
+	}
+
+	.stats_grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+
+		.stat_card {
+			background: white;
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			padding: 1.5rem;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+			.stat_label {
+				font-size: 0.875rem;
+				color: #666;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat_value {
+				font-size: 2rem;
+				font-weight: bold;
+				color: #0070f3;
+			}
+		}
+	}
+
+	.action_buttons {
+		display: flex;
+		gap: 0.5rem;
+
+		.edit_button {
+			padding: 0.5rem 1rem;
+			background: #28a745;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			font-size: 0.875rem;
+			cursor: pointer;
+			transition: background 0.3s ease;
+
+			&:hover {
+				background: #218838;
+			}
+		}
+
+		.delete_button {
+			padding: 0.5rem 1rem;
+			background: #dc3545;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			font-size: 0.875rem;
+			cursor: pointer;
+			transition: background 0.3s ease;
+
+			&:hover {
+				background: #c82333;
+			}
+		}
+	}
+
+	.view_link {
+		color: #0070f3;
+		text-decoration: none;
+		font-weight: 500;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.empty_state {
+		text-align: center;
+		padding: 3rem;
+		color: #666;
+
+		p {
+			font-size: 1.1rem;
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+.form_group {
+	margin-bottom: 1.5rem;
+
+	label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+		color: #333;
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		padding: 0.75rem;
+		border: 1px solid #ddd;
+		border-radius: 6px;
+		font-size: 1rem;
+		transition: border-color 0.3s ease;
+
+		&:focus {
+			outline: none;
+			border-color: #0070f3;
+			box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+		}
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 100px;
+	}
+}
+

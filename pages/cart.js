@@ -10,10 +10,12 @@ import TableStyles from './table.module.scss';
 
 import Layout from '../components/Layout';
 import Notice from '../components/Notice';
+import { useNotification } from '../components/NotificationProvider';
 
 const Cart = () => {
 	const router = useRouter();
 	const { state, dispatch } = useContext(Store);
+	const { showWarning } = useNotification();
 	const {
 		cart: { cartItems },
 	} = state;
@@ -28,8 +30,8 @@ const Cart = () => {
 	const cartUpdateHandler = async (item, quantity) => {
 		let data = await fetch(`/api/product/${item._id}`);
 		data = await data.json();
-		if (Number(data.book.countInStock) < Number(quantity)) {
-			alert('Sorry, Product is out of stock now');
+		if (Number(data.book.quantity) < Number(quantity)) {
+			showWarning('Sorry, Product is out of stock now');
 			return;
 		}
 		dispatch({
@@ -37,6 +39,7 @@ const Cart = () => {
 			payload: {
 				...item,
 				quantity,
+				stockQuantity: data.book.quantity,
 			},
 		});
 	};
@@ -85,19 +88,15 @@ const Cart = () => {
 														href={`/books/${item.slug}`}
 														legacyBehavior
 													>
-														<a
-															className={
-																Styles.product_name
-															}
-														>
-															<img
-																src={item.image}
-																alt={item.name}
-															/>
-															<strong>
-																{item.name}
-															</strong>
-														</a>
+													<a
+														className={
+															Styles.product_name
+														}
+													>
+														<strong>
+															{item.name}
+														</strong>
+													</a>
 													</Link>
 												</td>
 												<td>
@@ -128,7 +127,7 @@ const Cart = () => {
 													<button
 														className={`${Styles.action_button} button`}
 														disabled={
-															item.countInStock ===
+															(item.stockQuantity || item.quantity) <=
 															item.quantity
 																? 'disabled'
 																: 0

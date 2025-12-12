@@ -8,7 +8,7 @@ export default function noRouteFound() {
 				<h2>404</h2>
 				<p>
 					No route found. Go to{' '}
-					<Link href="/">
+					<Link href="/" legacyBehavior>
 						<a>
 							<span style={{ textDecoration: 'underline' }}>
 								Homepage

@@ -7,11 +7,13 @@ import Notice from '../../components/Notice';
 import Styles from './bookSingle.module.scss';
 import db from '../../utils/db';
 import Product from '../../models/Product';
+import { useNotification } from '../../components/NotificationProvider';
 
 export default function BookSingle(props) {
 	const { state, dispatch } = useContext(Store);
 	const { query } = useRouter();
 	const { slug } = query;
+	const { showWarning } = useNotification();
 	const book = props.products.find((book) => book.slug == slug);
 	const addToCart = async () => {
 		const bookInCart = state.cart.cartItems.find(
@@ -20,8 +22,8 @@ export default function BookSingle(props) {
 		const quantity = bookInCart ? bookInCart.quantity + 1 : 1;
 		let data = await fetch(`/api/product/${book._id}`);
 		data = await data.json();
-		if (Number(data.book.countInStock) < Number(quantity)) {
-			alert('Sorry, Product is out of stock now');
+		if (Number(data.book.quantity) < Number(quantity)) {
+			showWarning('Sorry, Product is out of stock now');
 			return;
 		}
 		dispatch({
@@ -29,6 +31,7 @@ export default function BookSingle(props) {
 			payload: {
 				...book,
 				quantity,
+				stockQuantity: data.book.quantity,
 			},
 		});
 	};
@@ -57,9 +60,6 @@ export default function BookSingle(props) {
 			<div className={Styles.book_single_wrap}>
 				<div className="container">
 					<div className={Styles.book_single_details}>
-						<div className={Styles.book_image}>
-							<img src={book.image} alt={book.name} />
-						</div>
 						<div className={Styles.book_single_content}>
 							<h2>{book.name}</h2>
 							<p className={Styles.book_author}>
@@ -69,10 +69,6 @@ export default function BookSingle(props) {
 								<strong>Category: </strong>
 								{book.category}
 							</p>
-							<p className={Styles.book_meta}>
-								<strong>Review: </strong>
-								{`${book.rating} of ${book.numReviews} reviews`}
-							</p>
 							<p className={Styles.book_description}>
 								{book.description}
 							</p>
@@ -81,14 +77,18 @@ export default function BookSingle(props) {
 									<strong>Price: </strong>
 									{`$${book.price}`}
 								</p>
+								<p className={Styles.book_meta}>
+									<strong>Quantity Available: </strong>
+									{book.quantity}
+								</p>
 								<button
 									onClick={() => addToCart()}
 									className={`${Styles.book_button} button`}
 									disabled={
-										book.countInStock > 0 ? '' : 'disabled'
+										book.quantity > 0 ? '' : 'disabled'
 									}
 								>
-									{book.countInStock > 0
+									{book.quantity > 0
 										? 'Add To Cart'
 										: 'Out Of Stock'}
 								</button>

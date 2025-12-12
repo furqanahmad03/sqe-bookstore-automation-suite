@@ -2,18 +2,21 @@ import '../styles/globals.scss';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { StoreProvider } from '../utils/Store';
+import { NotificationProvider } from '../components/NotificationProvider';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	return (
-		<SessionProvider session={session}>
+		<SessionProvider session={session} refetchInterval={5 * 60}>
 			<StoreProvider>
-				{Component.auth ? (
-					<Auth>
+				<NotificationProvider>
+					{Component.auth ? (
+						<Auth>
+							<Component {...pageProps} />
+						</Auth>
+					) : (
 						<Component {...pageProps} />
-					</Auth>
-				) : (
-					<Component {...pageProps} />
-				)}
+					)}
+				</NotificationProvider>
 			</StoreProvider>
 		</SessionProvider>
 	);

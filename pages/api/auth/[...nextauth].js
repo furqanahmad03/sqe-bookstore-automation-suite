@@ -4,19 +4,25 @@ import bcryptjs from 'bcryptjs';
 import User from '../../../models/User';
 import db from '../../../utils/db';
 
-export default NextAuth({
+const secret = process.env.NEXTAUTH_SECRET || 'development-secret-key';
+
+export const authOptions = {
 	session: {
 		strategy: 'jwt',
 	},
 	callbacks: {
 		async jwt({ token, user }) {
-			if (user?._id) token._id = user._id;
-			if (user?.isAdmin) token.isAdmin = user.isAdmin;
+			if (user) {
+				token.id = user.id;
+				token.isAdmin = user.isAdmin;
+			}
 			return token;
 		},
 		async session({ session, token }) {
-			if (token._id) session.user.id = token._id;
-			if (token.isAdmin) session.user.isAdmin = token.isAdmin;
+			if (token) {
+				session.user.id = token.id;
+				session.user.isAdmin = token.isAdmin;
+			}
 			return session;
 		},
 	},
@@ -24,24 +30,22 @@ export default NextAuth({
 		CredentialsProvider({
 			async authorize(credentials) {
 				await db.connect();
-				const user = await User.findOne({
-					email: credentials.email,
-				});
+				const user = await User.findOne({ email: credentials.email });
 				await db.disconnect();
-				if (
-					user &&
-					bcryptjs.compareSync(credentials.password, user.password)
-				) {
+
+				if (user && bcryptjs.compareSync(credentials.password, user.password)) {
 					return {
-						_id: user._id,
+						id: user._id.toString(),
 						name: user.name,
 						email: user.email,
-						image: 'blank',
-						isAdmin: user.isAdmin,
+						isAdmin: user.isAdmin || false,
 					};
 				}
-				throw new Error('Invalid credentials');
+				return null;
 			},
 		}),
 	],
-});
+	secret,
+};
+
+export default NextAuth(authOptions);

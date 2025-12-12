@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import Styles from './form.module.scss';
 import CheckoutProgress from '../components/CheckoutProgress';
 import { Store } from '../utils/Store';
+import { useNotification } from '../components/NotificationProvider';
 
 const Payment = () => {
 	const paymentMethods = ['PayPal', 'Stripe', 'CashOnDelivery'];
@@ -14,14 +15,15 @@ const Payment = () => {
 	const { state, dispatch } = useContext(Store);
 	const { cart } = state;
 	const { shippingAddress, paymentMethod } = cart;
-
+	const { showWarning } = useNotification();
 	const router = useRouter();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
 		if (!selectedPaymentMethod) {
-			return alert('Payment method is required');
+			showWarning('Please select a payment method');
+			return;
 		}
 
 		dispatch({

@@ -36,12 +36,21 @@ const Books = (props) => {
 export default Books;
 
 export async function getServerSideProps() {
-	await db.connect();
-	const products = await Product.find().lean();
+	try {
+		await db.connect();
+		const products = await Product.find().lean();
 
-	return {
-		props: {
-			products: products.map(db.convertDoctoObj),
-		},
-	};
+		return {
+			props: {
+				products: products.map(db.convertDoctoObj),
+			},
+		};
+	} catch (error) {
+		console.error('Error fetching products:', error);
+		return {
+			props: {
+				products: [],
+			},
+		};
+	}
 }

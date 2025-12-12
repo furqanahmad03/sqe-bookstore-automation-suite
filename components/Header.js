@@ -76,11 +76,19 @@ export default function Header() {
 														<a>Profile</a>
 													</Link>
 												</MenuItem>
-												<MenuItem>
-													<Link href="/order-history" legacyBehavior>
-														<a>Orders</a>
-													</Link>
-												</MenuItem>
+												{session.user.isAdmin ? (
+													<MenuItem>
+														<Link href="/dashboard" legacyBehavior>
+															<a>Dashboard</a>
+														</Link>
+													</MenuItem>
+												) : (
+													<MenuItem>
+														<Link href="/order-history" legacyBehavior>
+															<a>Orders</a>
+														</Link>
+													</MenuItem>
+												)}
 												<MenuItem>
 													<button
 														onClick={() =>

@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 
 import Layout from '../components/Layout';
 import Styles from './form.module.scss';
+import { useNotification } from '../components/NotificationProvider';
 
 const Profile = () => {
 	const { data: session } = useSession();
+	const { showSuccess, showError } = useNotification();
 	const [customError, setCustomError] = useState(null);
 
 	const {
@@ -39,7 +41,7 @@ const Profile = () => {
 
 			const response = await updateUser.json();
 			if (!updateUser.ok) {
-				alert(response.message);
+				showError(response.message || 'Failed to update profile');
 			} else {
 				const result = await signIn('credentials', {
 					redirect: false,
@@ -47,12 +49,13 @@ const Profile = () => {
 					password,
 				});
 				if (result.error) {
-					alert(result.error);
+					showError(result.error || 'Failed to refresh session');
+				} else {
+					showSuccess('Profile details updated successfully!');
 				}
 			}
-			alert('Profile details updated');
 		} catch (err) {
-			alert(err.message);
+			showError(err.message || 'An error occurred');
 		}
 	};
 

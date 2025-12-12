@@ -1,6 +1,5 @@
 import { useEffect, useReducer } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import axios from 'axios';
@@ -138,7 +137,7 @@ function OrderScreen() {
 												<tr key={item._id}>
 													<td>
 														<Link
-															href={`/product/${item.slug}`}
+															href={`/books/${item.slug}`}
 															legacyBehavior
 														>
 															<a
@@ -146,16 +145,6 @@ function OrderScreen() {
 																	Styles.product_name
 																}
 															>
-																<Image
-																	src={
-																		item.image
-																	}
-																	alt={
-																		item.name
-																	}
-																	width={50}
-																	height={50}
-																></Image>
 																<strong>
 																	{item.name}
 																</strong>

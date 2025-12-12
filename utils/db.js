@@ -1,24 +1,55 @@
 import mongoose from 'mongoose';
 
+// Set Mongoose options to suppress deprecation warnings
+mongoose.set('strictQuery', false);
+
 const connection = {};
 
 async function connect() {
-	if (connection.isConnected) {
-		console.log('Already connected');
-		return;
+	// Check if already connected and ready
+	if (connection.isConnected === 1) {
+		if (mongoose.connection.readyState === 1) {
+			console.log('Already connected');
+			return;
+		} else {
+			// Connection state is inconsistent, reset it
+			connection.isConnected = 0;
+		}
 	}
+
+	// Check existing connections
 	if (mongoose.connections.length > 0) {
-		connection.isConnected = mongoose.connections[0].readyState;
-		if (connect.isConnected === 1) {
-			console.log('Connection already exist');
+		const readyState = mongoose.connections[0].readyState;
+		if (readyState === 1) {
+			connection.isConnected = 1;
+			console.log('Connection already exists');
 			return;
 		}
-		// Disconnect becuase it's not in connected mode
-		await mongoose.disconnect();
+		// If connection exists but not ready, disconnect it
+		if (readyState !== 0) {
+			try {
+				await mongoose.disconnect();
+			} catch (err) {
+				// Ignore disconnect errors
+			}
+		}
 	}
-	const db = await mongoose.connect(process.env.MONGODB_URI);
-	console.log('New connection');
-	connection.isConnected = db.connections[0].readyState;
+
+	try {
+		// Connect with options - mongoose.connect() returns when connected
+		await mongoose.connect(process.env.MONGODB_URI, {
+			bufferCommands: false,
+			serverSelectionTimeoutMS: 5000,
+		});
+		
+		// Set connection state after successful connect
+		connection.isConnected = mongoose.connection.readyState;
+		console.log('New connection established');
+	} catch (error) {
+		console.error('Database connection error:', error);
+		connection.isConnected = 0;
+		throw error;
+	}
 }
 
 async function disconnect() {

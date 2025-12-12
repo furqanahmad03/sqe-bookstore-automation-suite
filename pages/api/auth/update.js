@@ -1,21 +1,21 @@
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import bcryptjs from 'bcryptjs';
 import User from '../../../models/User';
 import db from '../../../utils/db';
 
+const secret = process.env.NEXTAUTH_SECRET || 'development-secret-key';
+
 async function handler(req, res) {
 	if (req.method !== 'POST') {
-		return res.status(400).send({ message: `${req.method} not supported` });
+		return res.status(400).json({ message: `${req.method} not supported` });
 	}
 
-	const session = await getSession({ req });
-	if (!session) {
-		return res.status(401).send({ message: 'signin required' });
+	const token = await getToken({ req, secret });
+	if (!token) {
+		return res.status(401).json({ message: 'Authentication required' });
 	}
 
-	const { user } = session;
 	const { name, email, password } = req.body;
-	console.log(name);
 
 	if (
 		!name ||
@@ -29,20 +29,30 @@ async function handler(req, res) {
 		return;
 	}
 
-	await db.connect();
-	const toUpdateUser = await User.findById(user.id);
-	toUpdateUser.name = name;
-	toUpdateUser.email = email;
+	try {
+		await db.connect();
+		const toUpdateUser = await User.findById(token.id);
+		
+		if (!toUpdateUser) {
+			await db.disconnect();
+			return res.status(404).json({ message: 'User not found' });
+		}
 
-	if (password) {
-		toUpdateUser.password = bcryptjs.hashSync(password);
+		toUpdateUser.name = name;
+		toUpdateUser.email = email;
+
+		if (password) {
+			toUpdateUser.password = bcryptjs.hashSync(password);
+		}
+
+		await toUpdateUser.save();
+		await db.disconnect();
+		res.json({ message: 'User updated' });
+	} catch (error) {
+		await db.disconnect();
+		console.error('Update error:', error);
+		res.status(500).json({ message: error.message || 'Failed to update user' });
 	}
-
-	await toUpdateUser.save();
-	await db.disconnect();
-	res.send({
-		message: 'User updated',
-	});
 }
 
 export default handler;

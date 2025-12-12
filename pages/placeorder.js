@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -8,12 +7,14 @@ import Cookies from 'js-cookie';
 import CheckoutProgress from '../components/CheckoutProgress';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
+import { useNotification } from '../components/NotificationProvider';
 
 import Styles from './order.module.scss';
 import TableStyles from './table.module.scss';
 
 export default function PlaceOrderScreen() {
 	const { state, dispatch } = useContext(Store);
+	const { showError } = useNotification();
 	const { cart } = state;
 	const { cartItems, shippingAddress, paymentMethod } = cart;
 
@@ -60,7 +61,7 @@ export default function PlaceOrderScreen() {
 			router.push(`/order/${data._id}`);
 		} catch (err) {
 			setLoading(false);
-			alert(err.message);
+			showError(err.message || 'Failed to place order');
 		}
 	};
 
@@ -113,23 +114,14 @@ export default function PlaceOrderScreen() {
 												<tr key={item._id}>
 													<td>
 														<Link
-															href={`/product/${item.slug}`}
+															href={`/books/${item.slug}`}
+															legacyBehavior
 														>
 															<a
 																className={
 																	Styles.product_name
 																}
 															>
-																<Image
-																	src={
-																		item.image
-																	}
-																	alt={
-																		item.name
-																	}
-																	width={50}
-																	height={50}
-																></Image>
 																<strong>
 																	{item.name}
 																</strong>

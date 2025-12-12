@@ -1,6 +1,7 @@
 import { getToken } from 'next-auth/jwt';
 import Order from '../../../models/Order';
 import db from '../../../utils/db';
+import Product from '../../../models/Product';
 
 const secret = process.env.NEXTAUTH_SECRET || 'development-secret-key';
 
@@ -22,6 +23,12 @@ const handler = async (req, res) => {
 		});
 
 		const order = await newOrder.save();
+		for (const item of order.orderItems) {
+			await Product.updateOne(
+				{ _id: item._id },
+				{ $inc: { quantity: -item.quantity } }
+			);
+		}
 		await db.disconnect();
 		res.status(201).json(order);
 	} catch (error) {

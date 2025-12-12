@@ -1,0 +1,18 @@
+.notice_wrap {
+	display: flex;
+	align-items: center;
+	background-color: #76836e;
+	color: #fff;
+	border-radius: 5px;
+	padding: 10px 15px;
+	max-width: 520px;
+	margin: auto;
+
+	a {
+		text-decoration: underline;
+	}
+
+	> svg {
+		margin-inline-end: 15px;
+	}
+}

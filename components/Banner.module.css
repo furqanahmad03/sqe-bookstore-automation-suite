@@ -1,0 +1,34 @@
+.banner {
+	background: url('/images/banner.jpg') no-repeat center;
+	background-size: cover;
+	margin-top: -45px;
+	position: relative;
+}
+
+.banner:before {
+	background: rgba(0, 0, 0, 0.1);
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.2), transparent);
+	content: '';
+	inset: 0;
+	position: absolute;
+}
+
+.banner_inner {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 260px);
+	justify-content: center;
+	max-height: 1000px;
+	min-height: 300px;
+	position: relative;
+	z-index: 1;
+}
+
+.button {
+	padding: 12px 20px;
+}
+
+.button:hover {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

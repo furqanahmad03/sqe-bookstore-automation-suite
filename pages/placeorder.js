@@ -22,7 +22,7 @@ export default function PlaceOrderScreen() {
 
 	const itemsPrice = round2(
 		cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
-	); // 123.4567 => 123.46
+	);
 
 	const shippingPrice = itemsPrice > 200 ? 0 : 15;
 	const taxPrice = round2(itemsPrice * 0.15);
@@ -69,17 +69,19 @@ export default function PlaceOrderScreen() {
 		<Layout title="Place Order">
 			<div className="container">
 				<CheckoutProgress activeStep={3} />
-				<h2 className={Styles.oder_page_title}>Place Order</h2>
+				<h2 className={Styles.oder_page_title} data-testid="page-title">
+					Place Order
+				</h2>
 				{cartItems.length === 0 ? (
-					<div>
+					<div data-testid="empty-cart">
 						Cart is empty. <Link href="/">Go shopping</Link>
 					</div>
 				) : (
-					<div className={Styles.oder_page}>
+					<div className={Styles.oder_page} data-testid="order-summary">
 						<div className={Styles.oder_page_details}>
-							<div className={Styles.action_block}>
+							<div className={Styles.action_block} data-testid="shipping-section">
 								<h3>Shipping Address</h3>
-								<p>
+								<p data-testid="shipping-address">
 									{shippingAddress.fullName},{' '}
 									{shippingAddress.address},{' '}
 									{shippingAddress.city},{' '}
@@ -87,17 +89,21 @@ export default function PlaceOrderScreen() {
 									{shippingAddress.country}
 								</p>
 								<div>
-									<Link href="/shipping">Edit</Link>
+									<Link href="/shipping" data-testid="edit-shipping">
+										Edit
+									</Link>
 								</div>
 							</div>
-							<div className={Styles.action_block}>
+							<div className={Styles.action_block} data-testid="payment-section">
 								<h3>Payment Method</h3>
-								<p>{paymentMethod}</p>
+								<p data-testid="payment-method">{paymentMethod}</p>
 								<div>
-									<Link href="/payment">Edit</Link>
+									<Link href="/payment" data-testid="edit-payment">
+										Edit
+									</Link>
 								</div>
 							</div>
-							<div className={Styles.action_block}>
+							<div className={Styles.action_block} data-testid="order-items-section">
 								<h3>Order Items</h3>
 								<div className={Styles.order_table}>
 									<table className={TableStyles.table}>
@@ -110,30 +116,32 @@ export default function PlaceOrderScreen() {
 											</tr>
 										</thead>
 										<tbody>
-											{cartItems.map((item) => (
-												<tr key={item._id}>
+											{cartItems.map((item, index) => (
+												<tr key={item._id} data-testid={`order-item-${index}`}>
 													<td>
 														<Link
 															href={`/books/${item.slug}`}
 														>
-																<strong>
-																	{item.name}
-																</strong>
+															<strong data-testid={`item-name-${index}`}>
+																{item.name}
+															</strong>
 														</Link>
 													</td>
-													<td>{item.quantity}</td>
-													<td>${item.price}</td>
-													<td>
-														$
-														{item.quantity *
-															item.price}
+													<td data-testid={`item-quantity-${index}`}>
+														{item.quantity}
+													</td>
+													<td data-testid={`item-price-${index}`}>
+														${item.price}
+													</td>
+													<td data-testid={`item-subtotal-${index}`}>
+														${item.quantity * item.price}
 													</td>
 												</tr>
 											))}
 											<tr>
 												<td colSpan={4}>
 													<div className="t-align-center">
-														<Link href="/cart">
+														<Link href="/cart" data-testid="edit-cart">
 															Edit
 														</Link>
 													</div>
@@ -145,39 +153,39 @@ export default function PlaceOrderScreen() {
 							</div>
 						</div>
 						<div className={Styles.oder_page_summary}>
-							<div className={Styles.action_block}>
+							<div className={Styles.action_block} data-testid="order-summary-section">
 								<h3>Order Summary</h3>
 								<ul>
 									<li>
-										<div
-											className={Styles.order_summary_row}
-										>
+										<div className={Styles.order_summary_row}>
 											<div>Items</div>
-											<div>${itemsPrice}</div>
+											<div data-testid="items-price">
+												${itemsPrice}
+											</div>
 										</div>
 									</li>
 									<li>
-										<div
-											className={Styles.order_summary_row}
-										>
+										<div className={Styles.order_summary_row}>
 											<div>Tax</div>
-											<div>${taxPrice}</div>
+											<div data-testid="tax-price">
+												${taxPrice}
+											</div>
 										</div>
 									</li>
 									<li>
-										<div
-											className={Styles.order_summary_row}
-										>
+										<div className={Styles.order_summary_row}>
 											<div>Shipping</div>
-											<div>${shippingPrice}</div>
+											<div data-testid="shipping-price">
+												${shippingPrice}
+											</div>
 										</div>
 									</li>
 									<li>
-										<div
-											className={Styles.order_summary_row}
-										>
+										<div className={Styles.order_summary_row}>
 											<div>Total</div>
-											<div>${totalPrice}</div>
+											<div data-testid="total-price">
+												${totalPrice}
+											</div>
 										</div>
 									</li>
 									<li>
@@ -185,6 +193,7 @@ export default function PlaceOrderScreen() {
 											disabled={loading}
 											onClick={placeOrderHandler}
 											className={`${Styles.order_button} button`}
+											data-testid="place-order-button"
 										>
 											{loading
 												? 'Loading...'

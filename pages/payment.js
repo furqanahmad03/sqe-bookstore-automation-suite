@@ -52,14 +52,19 @@ const Payment = () => {
 		<Layout title="Payment Method">
 			<div className="container">
 				<CheckoutProgress activeStep={2} />
-				<form className={Styles.form} onSubmit={submitHandler}>
-					<h2>Payment Method</h2>
+				<form 
+					className={Styles.form} 
+					onSubmit={submitHandler}
+					data-testid="payment-form"
+				>
+					<h2 data-testid="page-title">Payment Method</h2>
 					{paymentMethods.map((payment) => (
 						<div key={payment} className={Styles.input_block}>
 							<input
 								name="paymentMethod"
 								id={payment}
 								type="radio"
+								data-testid={`payment-${payment}`}
 								checked={selectedPaymentMethod === payment}
 								onChange={() =>
 									setSelectedPaymentMethod(payment)
@@ -74,10 +79,17 @@ const Payment = () => {
 							className="button"
 							onClick={() => router.push('/shipping')}
 							type="button"
+							data-testid="back-button"
 						>
 							Back
 						</button>
-						<button className="button">Next</button>
+						<button 
+							className="button"
+							type="submit"
+							data-testid="next-button"
+						>
+							Next
+						</button>
 					</div>
 				</form>
 			</div>

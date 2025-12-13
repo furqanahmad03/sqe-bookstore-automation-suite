@@ -3,32 +3,51 @@ import { BasePage } from './BasePage';
 
 /**
  * Checkout Page Object Model
- * Handles multi-step checkout process
+ * Handles Shipping, Payment, and Place Order pages
  */
 export class CheckoutPage extends BasePage {
-  // Shipping Address Selectors
-  private fullNameInput = '#fullName';
-  private addressInput = '#address';
-  private cityInput = '#city';
-  private postalCodeInput = '#postalCode';
-  private countryInput = '#country';
+  // Shipping Page Selectors (data-testid)
+  private shippingForm = '[data-testid="shipping-form"]';
+  private fullNameInput = '[data-testid="fullName-input"]';
+  private addressInput = '[data-testid="address-input"]';
+  private cityInput = '[data-testid="city-input"]';
+  private postalCodeInput = '[data-testid="postalCode-input"]';
+  private countryInput = '[data-testid="country-input"]';
   
-  // Payment Method Selectors
-  private paypalRadio = '#PayPal';
-  private stripeRadio = '#Stripe';
-  private codRadio = '#CashOnDelivery';
+  // Payment Page Selectors (data-testid)
+  private paymentForm = '[data-testid="payment-form"]';
+  private paymentPayPal = '[data-testid="payment-PayPal"]';
+  private paymentStripe = '[data-testid="payment-Stripe"]';
+  private paymentCashOnDelivery = '[data-testid="payment-CashOnDelivery"]';
+  
+  // Place Order Page Selectors (data-testid)
+  private orderSummary = '[data-testid="order-summary"]';
+  private shippingSection = '[data-testid="shipping-section"]';
+  private shippingAddress = '[data-testid="shipping-address"]';
+  private paymentSection = '[data-testid="payment-section"]';
+  private paymentMethod = '[data-testid="payment-method"]';
+  private orderItemsSection = '[data-testid="order-items-section"]';
+  private orderSummarySection = '[data-testid="order-summary-section"]';
+  private itemsPrice = '[data-testid="items-price"]';
+  private taxPrice = '[data-testid="tax-price"]';
+  private shippingPrice = '[data-testid="shipping-price"]';
+  private totalPrice = '[data-testid="total-price"]';
+  private placeOrderButton = '[data-testid="place-order-button"]';
   
   // Common Selectors
-  private nextButton = 'button[type="submit"]';
-  private backButton = 'button:has-text("Back")';
-  private placeOrderButton = 'button:has-text("Place Order")';
-  private checkoutProgress = '.CheckoutProgress';
-  private orderSummary = '.oder_page_summary';
-  private successMessage = '.status_success';
+  private pageTitle = '[data-testid="page-title"]';
+  private nextButton = '[data-testid="next-button"]';
+  private backButton = '[data-testid="back-button"]';
+  private editShipping = '[data-testid="edit-shipping"]';
+  private editPayment = '[data-testid="edit-payment"]';
+  private editCart = '[data-testid="edit-cart"]';
+  private emptyCart = '[data-testid="empty-cart"]';
 
   constructor(page: Page) {
     super(page);
   }
+
+  // ==================== Navigation Methods ====================
 
   /**
    * Navigate to shipping page
@@ -51,8 +70,10 @@ export class CheckoutPage extends BasePage {
     await this.navigate('/placeorder');
   }
 
+  // ==================== Shipping Page Methods ====================
+
   /**
-   * Fill shipping address
+   * Fill shipping address form
    */
   async fillShippingAddress(
     fullName: string,
@@ -69,30 +90,167 @@ export class CheckoutPage extends BasePage {
   }
 
   /**
-   * Fill with default shipping address
+   * Get shipping address values
    */
-  async fillDefaultShippingAddress() {
-    await this.fillShippingAddress(
-      'John Doe',
-      '123 Main Street',
-      'New York',
-      '10001',
-      'United States'
-    );
+  async getShippingAddressValues(): Promise<{
+    fullName: string;
+    address: string;
+    city: string;
+    postalCode: string;
+    country: string;
+  }> {
+    return {
+      fullName: await this.page.locator(this.fullNameInput).inputValue(),
+      address: await this.page.locator(this.addressInput).inputValue(),
+      city: await this.page.locator(this.cityInput).inputValue(),
+      postalCode: await this.page.locator(this.postalCodeInput).inputValue(),
+      country: await this.page.locator(this.countryInput).inputValue(),
+    };
   }
+
+  /**
+   * Check if shipping form is visible
+   */
+  async isShippingFormVisible(): Promise<boolean> {
+    return await this.isVisible(this.shippingForm);
+  }
+
+  // ==================== Payment Page Methods ====================
 
   /**
    * Select payment method
    */
   async selectPaymentMethod(method: 'PayPal' | 'Stripe' | 'CashOnDelivery') {
-    const radioMap = {
-      'PayPal': this.paypalRadio,
-      'Stripe': this.stripeRadio,
-      'CashOnDelivery': this.codRadio
-    };
+    const selector = method === 'PayPal' 
+      ? this.paymentPayPal 
+      : method === 'Stripe' 
+      ? this.paymentStripe 
+      : this.paymentCashOnDelivery;
     
-    await this.click(radioMap[method]);
+    await this.page.check(selector);
+    await this.wait(300);
   }
+
+  /**
+   * Check if payment method is selected
+   */
+  async isPaymentMethodSelected(method: 'PayPal' | 'Stripe' | 'CashOnDelivery'): Promise<boolean> {
+    const selector = method === 'PayPal' 
+      ? this.paymentPayPal 
+      : method === 'Stripe' 
+      ? this.paymentStripe 
+      : this.paymentCashOnDelivery;
+    
+    return await this.page.isChecked(selector);
+  }
+
+  /**
+   * Check if payment form is visible
+   */
+  async isPaymentFormVisible(): Promise<boolean> {
+    return await this.isVisible(this.paymentForm);
+  }
+
+  // ==================== Place Order Page Methods ====================
+
+  /**
+   * Get displayed shipping address
+   */
+  async getDisplayedShippingAddress(): Promise<string> {
+    return await this.getText(this.shippingAddress);
+  }
+
+  /**
+   * Get displayed payment method
+   */
+  async getDisplayedPaymentMethod(): Promise<string> {
+    return await this.getText(this.paymentMethod);
+  }
+
+  /**
+   * Get order item by index
+   */
+  private getOrderItem(index: number) {
+    return `[data-testid="order-item-${index}"]`;
+  }
+
+  /**
+   * Get number of order items
+   */
+  async getOrderItemCount(): Promise<number> {
+    return await this.getElementCount('[data-testid^="order-item-"]');
+  }
+
+  /**
+   * Get order item name by index
+   */
+  async getOrderItemName(index: number): Promise<string> {
+    return await this.getText(`[data-testid="item-name-${index}"]`);
+  }
+
+  /**
+   * Get order item quantity by index
+   */
+  async getOrderItemQuantity(index: number): Promise<number> {
+    const quantityText = await this.getText(`[data-testid="item-quantity-${index}"]`);
+    return parseInt(quantityText) || 0;
+  }
+
+  /**
+   * Get order item price by index
+   */
+  async getOrderItemPrice(index: number): Promise<number> {
+    const priceText = await this.getText(`[data-testid="item-price-${index}"]`);
+    return parseFloat(priceText.replace('$', '')) || 0;
+  }
+
+  /**
+   * Get items price total
+   */
+  async getItemsPrice(): Promise<number> {
+    const priceText = await this.getText(this.itemsPrice);
+    return parseFloat(priceText.replace('$', '')) || 0;
+  }
+
+  /**
+   * Get tax price
+   */
+  async getTaxPrice(): Promise<number> {
+    const priceText = await this.getText(this.taxPrice);
+    return parseFloat(priceText.replace('$', '')) || 0;
+  }
+
+  /**
+   * Get shipping price
+   */
+  async getShippingPrice(): Promise<number> {
+    const priceText = await this.getText(this.shippingPrice);
+    return parseFloat(priceText.replace('$', '')) || 0;
+  }
+
+  /**
+   * Get total price
+   */
+  async getTotalPrice(): Promise<number> {
+    const priceText = await this.getText(this.totalPrice);
+    return parseFloat(priceText.replace('$', '')) || 0;
+  }
+
+  /**
+   * Check if order summary is visible
+   */
+  async isOrderSummaryVisible(): Promise<boolean> {
+    return await this.isVisible(this.orderSummary);
+  }
+
+  /**
+   * Check if cart is empty
+   */
+  async isCartEmpty(): Promise<boolean> {
+    return await this.isVisible(this.emptyCart);
+  }
+
+  // ==================== Action Methods ====================
 
   /**
    * Click next button
@@ -111,121 +269,284 @@ export class CheckoutPage extends BasePage {
   }
 
   /**
-   * Place order
+   * Click place order button
    */
-  async placeOrder() {
+  async clickPlaceOrder() {
     await this.click(this.placeOrderButton);
+    await this.wait(1000);
+  }
+
+  /**
+   * Click edit shipping link
+   */
+  async clickEditShipping() {
+    await this.click(this.editShipping);
     await this.waitForNavigation();
   }
 
   /**
-   * Complete full checkout process
+   * Click edit payment link
    */
-  async completeCheckout(
-    shippingData?: {
-      fullName: string,
-      address: string,
-      city: string,
-      postalCode: string,
-      country: string
-    },
-    paymentMethod: 'PayPal' | 'Stripe' | 'CashOnDelivery' = 'CashOnDelivery'
+  async clickEditPayment() {
+    await this.click(this.editPayment);
+    await this.waitForNavigation();
+  }
+
+  /**
+   * Click edit cart link
+   */
+  async clickEditCart() {
+    await this.click(this.editCart);
+    await this.waitForNavigation();
+  }
+
+  // ==================== Verification Methods ====================
+
+  /**
+   * Verify page title
+   */
+  async verifyPageTitle(expectedTitle: string) {
+    await expect(this.page.locator(this.pageTitle)).toContainText(expectedTitle);
+  }
+
+  /**
+   * Verify validation error for field
+   */
+  async verifyValidationError(fieldName: string) {
+    const errorSelector = `[data-testid="${fieldName}-error"]`;
+    await expect(this.page.locator(errorSelector)).toBeVisible();
+  }
+
+  /**
+   * Verify shipping address on place order page
+   */
+  async verifyShippingAddress(
+    fullName: string,
+    address: string,
+    city: string,
+    postalCode: string,
+    country: string
   ) {
-    // Step 1: Shipping Address
-    await this.gotoShipping();
-    if (shippingData) {
-      await this.fillShippingAddress(
-        shippingData.fullName,
-        shippingData.address,
-        shippingData.city,
-        shippingData.postalCode,
-        shippingData.country
-      );
-    } else {
-      await this.fillDefaultShippingAddress();
+    const displayedAddress = await this.getDisplayedShippingAddress();
+    expect(displayedAddress).toContain(fullName);
+    expect(displayedAddress).toContain(address);
+    expect(displayedAddress).toContain(city);
+    expect(displayedAddress).toContain(postalCode);
+    expect(displayedAddress).toContain(country);
+  }
+
+  /**
+   * Verify payment method on place order page
+   */
+  async verifyPaymentMethod(expectedMethod: string) {
+    const displayedMethod = await this.getDisplayedPaymentMethod();
+    expect(displayedMethod).toContain(expectedMethod);
+  }
+
+  /**
+   * Verify order items section is displayed
+   */
+  async verifyOrderItemsDisplayed() {
+    await expect(this.page.locator(this.orderItemsSection)).toBeVisible();
+    const itemCount = await this.getOrderItemCount();
+    expect(itemCount).toBeGreaterThan(0);
+  }
+
+  /**
+   * Verify order summary section is displayed
+   */
+  async verifyOrderSummaryDisplayed() {
+    await expect(this.page.locator(this.orderSummarySection)).toBeVisible();
+    await expect(this.page.locator(this.itemsPrice)).toBeVisible();
+    await expect(this.page.locator(this.taxPrice)).toBeVisible();
+    await expect(this.page.locator(this.shippingPrice)).toBeVisible();
+    await expect(this.page.locator(this.totalPrice)).toBeVisible();
+  }
+
+  /**
+   * Verify all place order sections are displayed
+   */
+  async verifyPlaceOrderSections() {
+    await expect(this.page.locator(this.shippingSection)).toBeVisible();
+    await expect(this.page.locator(this.paymentSection)).toBeVisible();
+    await expect(this.page.locator(this.orderItemsSection)).toBeVisible();
+    await expect(this.page.locator(this.orderSummarySection)).toBeVisible();
+  }
+
+  /**
+   * Verify checkout progress steps
+   */
+  async verifyCheckoutProgress(activeStep: number) {
+    const steps = ['User Login', 'Shipping Address', 'Payment Method', 'Place Order'];
+    
+    for (const step of steps) {
+      await expect(this.page.locator(`text=${step}`)).toBeVisible();
     }
-    await this.clickNext();
-
-    // Step 2: Payment Method
-    await this.selectPaymentMethod(paymentMethod);
-    await this.clickNext();
-
-    // Step 3: Place Order
-    await this.placeOrder();
   }
 
   /**
-   * Get current checkout step
+   * Verify URL matches expected path
    */
-  async getCurrentStep(): Promise<number> {
-    const activeSteps = await this.page.locator('.CheckoutProgress .active').count();
-    return activeSteps;
+  async verifyURL(expectedPath: string) {
+    await expect(this.page).toHaveURL(new RegExp(expectedPath));
   }
 
   /**
-   * Verify shipping page elements
+   * Wait for order confirmation page
    */
-  async verifyShippingPageElements() {
-    await expect(this.page.locator('h2')).toContainText('Shipping Address');
-    await expect(this.page.locator(this.fullNameInput)).toBeVisible();
-    await expect(this.page.locator(this.addressInput)).toBeVisible();
-    await expect(this.page.locator(this.cityInput)).toBeVisible();
-    await expect(this.page.locator(this.postalCodeInput)).toBeVisible();
-    await expect(this.page.locator(this.countryInput)).toBeVisible();
+  async waitForOrderConfirmation() {
+    await this.page.waitForURL(/\/order\/[a-z0-9]+/, { timeout: 15000 });
   }
 
   /**
-   * Verify payment page elements
-   */
-  async verifyPaymentPageElements() {
-    await expect(this.page.locator('h2')).toContainText('Payment Method');
-    await expect(this.page.locator(this.paypalRadio)).toBeVisible();
-    await expect(this.page.locator(this.stripeRadio)).toBeVisible();
-    await expect(this.page.locator(this.codRadio)).toBeVisible();
-  }
-
-  /**
-   * Verify place order page elements
-   */
-  async verifyPlaceOrderPageElements() {
-    await expect(this.page.locator('h2')).toContainText('Place Order');
-    await expect(this.page.locator(this.orderSummary)).toBeVisible();
-    await expect(this.page.locator(this.placeOrderButton)).toBeVisible();
-  }
-
-  /**
-   * Get order total from summary
-   */
-  async getOrderTotal(): Promise<number> {
-    const totalText = await this.page
-      .locator('.order_summary_row:has-text("Total") div')
-      .last()
-      .textContent();
-    return parseFloat(totalText?.replace('$', '') || '0');
-  }
-
-  /**
-   * Get order ID after successful placement
-   */
-  async getOrderId(): Promise<string> {
-    // Wait for navigation to order page
-    await this.page.waitForURL(/\/order\/.+/);
-    const url = this.getCurrentURL();
-    return url.split('/order/')[1];
-  }
-
-  /**
-   * Verify order success
+   * Verify order success (on order details page)
    */
   async verifyOrderSuccess() {
-    await expect(this.page).toHaveURL(/\/order\/.+/);
+    await this.waitForOrderConfirmation();
+    await expect(this.page.locator('h2')).toBeVisible();
   }
 
   /**
-   * Get error messages on form
+   * Verify shipping price calculation
    */
-  async getFormErrors(): Promise<string[]> {
-    const errors = await this.page.locator('.error').all();
-    return await Promise.all(errors.map(e => e.textContent() || '') as unknown as string[]);
+  async verifyShippingPriceCalculation() {
+    const itemsPrice = await this.getItemsPrice();
+    const shippingPrice = await this.getShippingPrice();
+    
+    // Shipping is $15 if items price <= $200, otherwise free
+    const expectedShipping = itemsPrice > 200 ? 0 : 15;
+    expect(shippingPrice).toBe(expectedShipping);
+  }
+
+  /**
+   * Verify total price calculation
+   */
+  async verifyTotalPriceCalculation() {
+    const items = await this.getItemsPrice();
+    const tax = await this.getTaxPrice();
+    const shipping = await this.getShippingPrice();
+    const total = await this.getTotalPrice();
+    
+    const expectedTotal = parseFloat((items + tax + shipping).toFixed(2));
+    expect(total).toBe(expectedTotal);
+  }
+
+  // ==================== Complete Flow Methods ====================
+
+  /**
+   * Complete shipping step
+   */
+  async completeShippingStep(
+    fullName: string,
+    address: string,
+    city: string,
+    postalCode: string,
+    country: string
+  ) {
+    await this.gotoShipping();
+    await this.fillShippingAddress(fullName, address, city, postalCode, country);
+    await this.clickNext();
+  }
+
+  /**
+   * Complete payment step
+   */
+  async completePaymentStep(method: 'PayPal' | 'Stripe' | 'CashOnDelivery') {
+    await this.selectPaymentMethod(method);
+    await this.clickNext();
+  }
+
+  /**
+   * Complete full checkout flow
+   */
+  async completeCheckout(
+    shippingInfo: {
+      fullName: string;
+      address: string;
+      city: string;
+      postalCode: string;
+      country: string;
+    },
+    paymentMethod: 'PayPal' | 'Stripe' | 'CashOnDelivery'
+  ) {
+    // Complete shipping
+    await this.completeShippingStep(
+      shippingInfo.fullName,
+      shippingInfo.address,
+      shippingInfo.city,
+      shippingInfo.postalCode,
+      shippingInfo.country
+    );
+
+    // Complete payment
+    await this.completePaymentStep(paymentMethod);
+
+    // Place order
+    await this.clickPlaceOrder();
+    await this.waitForOrderConfirmation();
+  }
+
+  /**
+   * Get complete order summary data
+   */
+  async getOrderSummaryData(): Promise<{
+    itemsPrice: number;
+    taxPrice: number;
+    shippingPrice: number;
+    totalPrice: number;
+  }> {
+    return {
+      itemsPrice: await this.getItemsPrice(),
+      taxPrice: await this.getTaxPrice(),
+      shippingPrice: await this.getShippingPrice(),
+      totalPrice: await this.getTotalPrice(),
+    };
+  }
+
+  /**
+   * Get all order items data
+   */
+  async getAllOrderItems(): Promise<Array<{
+    name: string;
+    quantity: number;
+    price: number;
+  }>> {
+    const count = await this.getOrderItemCount();
+    const items: Array<{
+      name: string;
+      quantity: number;
+      price: number;
+    }> = [];
+    
+    for (let i = 0; i < count; i++) {
+      items.push({
+        name: await this.getOrderItemName(i),
+        quantity: await this.getOrderItemQuantity(i),
+        price: await this.getOrderItemPrice(i),
+      });
+    }
+    
+    return items;
+  }
+
+  /**
+   * Check if place order button is disabled
+   */
+  async isPlaceOrderButtonDisabled(): Promise<boolean> {
+    return await this.page.locator(this.placeOrderButton).isDisabled();
+  }
+
+  /**
+   * Check if next button is visible
+   */
+  async isNextButtonVisible(): Promise<boolean> {
+    return await this.isVisible(this.nextButton);
+  }
+
+  /**
+   * Check if back button is visible
+   */
+  async isBackButtonVisible(): Promise<boolean> {
+    return await this.isVisible(this.backButton);
   }
 }

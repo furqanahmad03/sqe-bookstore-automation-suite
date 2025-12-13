@@ -8,10 +8,15 @@ const CheckoutProgress = ({ activeStep }) => {
 		'Place Order',
 	];
 	return (
-		<div className={Styles.CheckoutProgress}>
+		<div className={Styles.CheckoutProgress} data-testid="checkout-progress">
 			<ul>
 				{steps.map((step, index) => (
-					<li className={index <= activeStep ? Styles.active : ''}>
+					<li 
+						key={index}
+						className={index <= activeStep ? Styles.active : ''}
+						data-testid={`progress-step-${index}`}
+						data-active={index <= activeStep}
+					>
 						{step}
 					</li>
 				))}

@@ -35,6 +35,16 @@ export class LoginPage extends BasePage {
   }
 
   /**
+   * Admin login for tests
+   */
+  async adminLogin() {
+    await this.fill(this.emailInput, 'admin@example.com');
+    await this.fill(this.passwordInput, 'admin123');
+    await this.click(this.loginButton);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  /**
    * Check if user is logged in
    */
   async isLoggedIn(): Promise<boolean> {

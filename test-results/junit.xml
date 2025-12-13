@@ -1,0 +1,492 @@
+<testsuites id="" name="" tests="50" failures="20" skipped="0" errors="0" time="154.71508">
+<testsuite name="auth.spec.ts" timestamp="2025-12-13T02:15:29.633Z" hostname="chromium" tests="10" failures="0" skipped="0" time="60.275" errors="0">
+<testcase name="Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke" classname="auth.spec.ts" time="9.678">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional" classname="auth.spec.ts" time="5.959">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional" classname="auth.spec.ts" time="4.006">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional" classname="auth.spec.ts" time="6.212">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke" classname="auth.spec.ts" time="5.757">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional" classname="auth.spec.ts" time="5.937">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional" classname="auth.spec.ts" time="4.178">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke" classname="auth.spec.ts" time="6">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional" classname="auth.spec.ts" time="5.61">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression" classname="auth.spec.ts" time="6.938">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-12-13T02:15:29.633Z" hostname="firefox" tests="10" failures="0" skipped="0" time="96.962" errors="0">
+<testcase name="Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke" classname="auth.spec.ts" time="17.337">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional" classname="auth.spec.ts" time="11.633">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional" classname="auth.spec.ts" time="7.59">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional" classname="auth.spec.ts" time="6.583">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke" classname="auth.spec.ts" time="7.875">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional" classname="auth.spec.ts" time="7.645">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional" classname="auth.spec.ts" time="7.676">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke" classname="auth.spec.ts" time="7.974">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional" classname="auth.spec.ts" time="9.163">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression" classname="auth.spec.ts" time="13.486">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-12-13T02:15:29.633Z" hostname="webkit" tests="10" failures="10" skipped="0" time="16.075" errors="0">
+<testcase name="Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke" classname="auth.spec.ts" time="1.656">
+<failure message="auth.spec.ts:7:7 TC-AUTH-001: User registration with valid data @smoke" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:7:7 › Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional" classname="auth.spec.ts" time="1.666">
+<failure message="auth.spec.ts:20:7 TC-AUTH-002: User registration with password mismatch @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:20:7 › Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--7b541-assword-mismatch-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional" classname="auth.spec.ts" time="1.227">
+<failure message="auth.spec.ts:31:7 TC-AUTH-003: User registration with invalid email format @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:31:7 › Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--c12d9-lid-email-format-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional" classname="auth.spec.ts" time="1.955">
+<failure message="auth.spec.ts:42:7 TC-AUTH-004: User registration with short password @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:42:7 › Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--bbbce-h-short-password-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke" classname="auth.spec.ts" time="2.254">
+<failure message="auth.spec.ts:53:7 TC-AUTH-005: User login with valid credentials @smoke" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:53:7 › Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional" classname="auth.spec.ts" time="1.581">
+<failure message="auth.spec.ts:66:7 TC-AUTH-006: User login with invalid credentials @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:66:7 › Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--8737d-alid-credentials-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional" classname="auth.spec.ts" time="1.297">
+<failure message="auth.spec.ts:77:7 TC-AUTH-007: User login with empty fields @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:77:7 › Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke" classname="auth.spec.ts" time="1.428">
+<failure message="auth.spec.ts:88:7 TC-AUTH-008: Navigation between login and register pages @smoke" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:88:7 › Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional" classname="auth.spec.ts" time="1.17">
+<failure message="auth.spec.ts:102:7 TC-AUTH-009: Password field security (masked input) @functional" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:102:7 › Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--3b6a3-ity-masked-input-functional-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression" classname="auth.spec.ts" time="1.841">
+<failure message="auth.spec.ts:111:7 TC-AUTH-010: Session persistence after login @regression" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:111:7 › Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression 
+
+    Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--0d287-ence-after-login-regression-webkit/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-12-13T02:15:29.633Z" hostname="Mobile Chrome" tests="10" failures="0" skipped="0" time="57.496" errors="0">
+<testcase name="Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke" classname="auth.spec.ts" time="8.964">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional" classname="auth.spec.ts" time="4.976">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional" classname="auth.spec.ts" time="5.148">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional" classname="auth.spec.ts" time="5.388">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke" classname="auth.spec.ts" time="5.539">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional" classname="auth.spec.ts" time="5.444">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional" classname="auth.spec.ts" time="4.019">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke" classname="auth.spec.ts" time="4.382">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional" classname="auth.spec.ts" time="4.302">
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression" classname="auth.spec.ts" time="9.334">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-12-13T02:15:29.633Z" hostname="Mobile Safari" tests="10" failures="10" skipped="0" time="4.945" errors="0">
+<testcase name="Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke" classname="auth.spec.ts" time="0.5">
+<failure message="auth.spec.ts:7:7 TC-AUTH-001: User registration with valid data @smoke" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:7:7 › Authentication Tests @functional › TC-AUTH-001: User registration with valid data @smoke 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional" classname="auth.spec.ts" time="0.355">
+<failure message="auth.spec.ts:20:7 TC-AUTH-002: User registration with password mismatch @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:20:7 › Authentication Tests @functional › TC-AUTH-002: User registration with password mismatch @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--7b541-assword-mismatch-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional" classname="auth.spec.ts" time="0.367">
+<failure message="auth.spec.ts:31:7 TC-AUTH-003: User registration with invalid email format @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:31:7 › Authentication Tests @functional › TC-AUTH-003: User registration with invalid email format @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--c12d9-lid-email-format-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional" classname="auth.spec.ts" time="0.811">
+<failure message="auth.spec.ts:42:7 TC-AUTH-004: User registration with short password @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:42:7 › Authentication Tests @functional › TC-AUTH-004: User registration with short password @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--bbbce-h-short-password-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke" classname="auth.spec.ts" time="0.602">
+<failure message="auth.spec.ts:53:7 TC-AUTH-005: User login with valid credentials @smoke" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:53:7 › Authentication Tests @functional › TC-AUTH-005: User login with valid credentials @smoke 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional" classname="auth.spec.ts" time="0.552">
+<failure message="auth.spec.ts:66:7 TC-AUTH-006: User login with invalid credentials @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:66:7 › Authentication Tests @functional › TC-AUTH-006: User login with invalid credentials @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--8737d-alid-credentials-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional" classname="auth.spec.ts" time="0.506">
+<failure message="auth.spec.ts:77:7 TC-AUTH-007: User login with empty fields @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:77:7 › Authentication Tests @functional › TC-AUTH-007: User login with empty fields @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke" classname="auth.spec.ts" time="0.496">
+<failure message="auth.spec.ts:88:7 TC-AUTH-008: Navigation between login and register pages @smoke" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:88:7 › Authentication Tests @functional › TC-AUTH-008: Navigation between login and register pages @smoke 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional" classname="auth.spec.ts" time="0.496">
+<failure message="auth.spec.ts:102:7 TC-AUTH-009: Password field security (masked input) @functional" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:102:7 › Authentication Tests @functional › TC-AUTH-009: Password field security (masked input) @functional 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--3b6a3-ity-masked-input-functional-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression" classname="auth.spec.ts" time="0.26">
+<failure message="auth.spec.ts:111:7 TC-AUTH-010: Session persistence after login @regression" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:111:7 › Authentication Tests @functional › TC-AUTH-010: Session persistence after login @regression 
+
+    Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-Mobile-Safari/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-Mobile-Safari/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-Tests--0d287-ence-after-login-regression-Mobile-Safari/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

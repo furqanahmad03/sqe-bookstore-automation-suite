@@ -26,10 +26,8 @@ export default function Header() {
 			<div className="container">
 				<div className={Styles.header_inner}>
 					<h1>
-						<Link href="/" legacyBehavior>
-							<a>
+						<Link href="/">
 								Book <span>Store</span>
-							</a>
 						</Link>
 					</h1>
 					<div className="header_sidebar">
@@ -42,14 +40,12 @@ export default function Header() {
 											: ''
 									}
 								>
-									<Link href="/cart" legacyBehavior>
-										<a>
+									<Link href="/cart">
 											{/* Add "Styles.active" to show active state */}
 											<span>Cart</span>{' '}
 											<span className={Styles.cart_item}>
 												{cartNumber}
 											</span>
-										</a>
 									</Link>
 								</li>
 								<li
@@ -72,20 +68,20 @@ export default function Header() {
 											</MenuButton>
 											<Menu>
 												<MenuItem>
-													<Link href="/profile" legacyBehavior>
-														<a>Profile</a>
+													<Link href="/profile">
+														Profile
 													</Link>
 												</MenuItem>
 												{session.user.isAdmin ? (
 													<MenuItem>
-														<Link href="/dashboard" legacyBehavior>
-															<a>Dashboard</a>
+														<Link href="/dashboard">
+															Dashboard
 														</Link>
 													</MenuItem>
 												) : (
 													<MenuItem>
-														<Link href="/order-history" legacyBehavior>
-															<a>Orders</a>
+														<Link href="/order-history">
+															Orders
 														</Link>
 													</MenuItem>
 												)}
@@ -104,10 +100,8 @@ export default function Header() {
 											</Menu>
 										</DropdownMenu>
 									) : (
-										<Link href="/login" legacyBehavior>
-											<a>
-												<span>Login</span>
-											</a>
+										<Link href="/login">
+											Login
 										</Link>
 									)}
 								</li>

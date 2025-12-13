@@ -19,8 +19,8 @@ export default function Layout({ title, children }) {
 				<footer className="footer">
 					<div className="container">
 						Built with Nextjs and MongoDB by{' '}
-						<Link href="https://furqanahmad.me/" legacyBehavior>
-							<a target="_blank">Furqan Ahmad</a>
+						<Link href="https://furqanahmad.me/" target="_blank">
+							Furqan Ahmad
 						</Link>
 					</div>
 				</footer>

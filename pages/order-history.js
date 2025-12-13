@@ -88,7 +88,6 @@ function OrderHistoryScreen() {
 										<td className={TableStyles.table_link}>
 											<Link
 												href={`/order/${order._id}`}
-												passHref
 											>
 												Details
 											</Link>

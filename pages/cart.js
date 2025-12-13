@@ -86,17 +86,10 @@ const Cart = () => {
 												<td>
 													<Link
 														href={`/books/${item.slug}`}
-														legacyBehavior
-													>
-													<a
-														className={
-															Styles.product_name
-														}
 													>
 														<strong>
 															{item.name}
 														</strong>
-													</a>
 													</Link>
 												</td>
 												<td>

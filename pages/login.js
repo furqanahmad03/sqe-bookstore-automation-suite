@@ -34,10 +34,10 @@ const Login = () => {
 				password,
 			});
 			if (result.error) {
-				showError(result.error || 'Invalid credentials');
+				showError('Invalid credentials');
 			}
 		} catch (err) {
-			showError(err.message || 'An error occurred during login');
+			showError('An error occurred during login');
 		}
 	};
 
@@ -92,8 +92,8 @@ const Login = () => {
 					</button>
 					<p>
 						Don't have an account?{' '}
-						<Link href="/register" legacyBehavior>
-							<a>Register</a>
+						<Link href="/register" id="register_link">
+							Register
 						</Link>
 					</p>
 				</form>

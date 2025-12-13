@@ -1,0 +1,2300 @@
+{
+  "config": {
+    "configFile": "/Users/furqan/Desktop/sqe/book-store/playwright.config.ts",
+    "rootDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/furqan/Desktop/sqe/book-store/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/furqan/Desktop/sqe/book-store/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/furqan/Desktop/sqe/book-store/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/furqan/Desktop/sqe/book-store/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/furqan/Desktop/sqe/book-store/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/furqan/Desktop/sqe/book-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 180000
+    }
+  },
+  "suites": [
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication Tests @functional",
+          "file": "auth.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-AUTH-001: User registration with valid data @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9678,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:31.114Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-4f7eda47d9dc71465fc0",
+              "file": "auth.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-002: User registration with password mismatch @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5959,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:31.168Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-5d19b77035400c224e9c",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-003: User registration with invalid email format @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4006,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:37.814Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ae9bfec163a547726b7e",
+              "file": "auth.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-004: User registration with short password @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6212,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:41.559Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-9f58b34888fff01508d7",
+              "file": "auth.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-005: User login with valid credentials @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5757,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:41.875Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-4c8cc98884a5c6ae9222",
+              "file": "auth.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-006: User login with invalid credentials @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5937,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:47.789Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-28c6ab60d630c584be79",
+              "file": "auth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-007: User login with empty fields @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4178,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:47.881Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3eb9160d2107f9676089",
+              "file": "auth.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-008: Navigation between login and register pages @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6000,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:52.088Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-d50ea057eb0064ef4130",
+              "file": "auth.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-009: Password field security (masked input) @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5610,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:53.756Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-5671b51f510343377cf7",
+              "file": "auth.spec.ts",
+              "line": 102,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-010: Session persistence after login @regression",
+              "ok": true,
+              "tags": [
+                "functional",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6938,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:15:58.105Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f9d49dd4dc7e9c57fb3c",
+              "file": "auth.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-001: User registration with valid data @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 17337,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:01.460Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f5ee2a92b26fed75957c",
+              "file": "auth.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-002: User registration with password mismatch @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11633,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:06.651Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-df2bfbbcf7e9c89f3bca",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-003: User registration with invalid email format @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7590,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:21.154Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-6f33c46bc20cc1c864d9",
+              "file": "auth.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-004: User registration with short password @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6583,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:21.983Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-4ee87d5cdc0e4f9bcbe3",
+              "file": "auth.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-005: User login with valid credentials @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7875,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:28.599Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e6882186b9e126425cc8",
+              "file": "auth.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-006: User login with invalid credentials @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7645,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:28.777Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-5bae1dd64d9dcfc35058",
+              "file": "auth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-007: User login with empty fields @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7676,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:36.443Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-c53b75389e4bacfcf978",
+              "file": "auth.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-008: Navigation between login and register pages @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7974,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:36.510Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f1fbcc44ead60c0d644d",
+              "file": "auth.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-009: Password field security (masked input) @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 9163,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:44.163Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-dc5a3312f80909617928",
+              "file": "auth.spec.ts",
+              "line": 102,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-010: Session persistence after login @regression",
+              "ok": true,
+              "tags": [
+                "functional",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13486,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:44.513Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-d21c90d0fb79012dfc3d",
+              "file": "auth.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-001: User registration with valid data @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1656,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:16:58.096Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3fa55d3639ec9862bb0a",
+              "file": "auth.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-002: User registration with password mismatch @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1666,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:01.438Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-0c33b7ca5919ff8ab629",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-003: User registration with invalid email format @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1227,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:01.696Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-39807bb4852bdd32ab9c",
+              "file": "auth.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-004: User registration with short password @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1955,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:05.500Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-052805892a6bc66ce513",
+              "file": "auth.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-005: User login with valid credentials @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2254,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:05.483Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-c6614ac38bf70afe80b4",
+              "file": "auth.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-006: User login with invalid credentials @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1581,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:10.789Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f7d857d1d43a9cb04468",
+              "file": "auth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-007: User login with empty fields @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1297,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:10.848Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-26d334bb3a5585320a21",
+              "file": "auth.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-008: Navigation between login and register pages @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1428,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:14.424Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-7bfb7b88be69ef443d3b",
+              "file": "auth.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-009: Password field security (masked input) @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1170,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:14.524Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-7831e6f9c9322480caa3",
+              "file": "auth.spec.ts",
+              "line": 102,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-010: Session persistence after login @regression",
+              "ok": false,
+              "tags": [
+                "functional",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1841,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument",
+                        "stack": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Page.overrideSetting): Unknown setting: FixedBackgroundsPaintRelativeToDocument"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:18.197Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-webkit/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-b3b9f9f34c5fb14b6a73",
+              "file": "auth.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-001: User registration with valid data @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8964,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:18.186Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-69814becf44a8ec5ceaa",
+              "file": "auth.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-002: User registration with password mismatch @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4976,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:23.508Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ea9f6c17ee6c2b5a2b4f",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-003: User registration with invalid email format @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5148,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:27.966Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3c9d0b71317a03f66551",
+              "file": "auth.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-004: User registration with short password @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5388,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:28.924Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e0e0a04693b03780c554",
+              "file": "auth.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-005: User login with valid credentials @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5539,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:33.163Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-8523cee840c65a414e3d",
+              "file": "auth.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-006: User login with invalid credentials @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5444,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:34.342Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e8ab02caa74a88aed8ed",
+              "file": "auth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-007: User login with empty fields @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4019,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:38.735Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1fb37307b2cac3d91cad",
+              "file": "auth.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-008: Navigation between login and register pages @smoke",
+              "ok": true,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4382,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:39.815Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e16712f1892fd3f921ab",
+              "file": "auth.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-009: Password field security (masked input) @functional",
+              "ok": true,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4302,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:42.782Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1d68f6ab91910b674f56",
+              "file": "auth.spec.ts",
+              "line": 102,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-010: Session persistence after login @regression",
+              "ok": true,
+              "tags": [
+                "functional",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 9334,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:44.222Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-10990da7c0514c8d1570",
+              "file": "auth.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-001: User registration with valid data @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 500,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:48.166Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--77a14-ation-with-valid-data-smoke-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-356ae155381e1defdae0",
+              "file": "auth.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-002: User registration with password mismatch @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 355,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:50.484Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--7b541-assword-mismatch-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-94bcd47efba86c95959d",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-003: User registration with invalid email format @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 367,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:53.282Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--c12d9-lid-email-format-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e206b6b6c92338e6db1a",
+              "file": "auth.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-004: User registration with short password @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 811,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:55.262Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--bbbce-h-short-password-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-beb26439b652cc79c6b9",
+              "file": "auth.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-005: User login with valid credentials @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 602,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:55.346Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--0e8b0-ith-valid-credentials-smoke-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-935f5036c42948253aeb",
+              "file": "auth.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-006: User login with invalid credentials @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 21,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 552,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:58.178Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--8737d-alid-credentials-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-c82fb325bb3ceafcddaf",
+              "file": "auth.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-007: User login with empty fields @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 22,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 506,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:17:58.088Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--4f5b7-ith-empty-fields-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-a5db5521dabf33628c7c",
+              "file": "auth.spec.ts",
+              "line": 77,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-008: Navigation between login and register pages @smoke",
+              "ok": false,
+              "tags": [
+                "functional",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 23,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 496,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:18:00.739Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--bdf6d-in-and-register-pages-smoke-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-d5e9007556cef5255712",
+              "file": "auth.spec.ts",
+              "line": 88,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-009: Password field security (masked input) @functional",
+              "ok": false,
+              "tags": [
+                "functional",
+                "functional"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 496,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:18:00.838Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--3b6a3-ity-masked-input-functional-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1d19c4bee9897a34b356",
+              "file": "auth.spec.ts",
+              "line": 102,
+              "column": 7
+            },
+            {
+              "title": "TC-AUTH-010: Session persistence after login @regression",
+              "ok": false,
+              "tags": [
+                "functional",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 260,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found",
+                        "stack": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Protocol error (Emulation.setOrientationOverride): 'Emulation.setOrientationOverride' was not found"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-13T02:18:02.923Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/furqan/Desktop/sqe/book-store/test-results/auth-Authentication-Tests--0d287-ence-after-login-regression-Mobile-Safari/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-28dd2b4e1685ae40215b",
+              "file": "auth.spec.ts",
+              "line": 111,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-13T02:15:28.792Z",
+    "duration": 154715.08,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 20,
+    "flaky": 0
+  }
+}

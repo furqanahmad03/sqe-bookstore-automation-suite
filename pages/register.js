@@ -176,8 +176,8 @@ const Register = () => {
 
 					<p>
 						Already have an account?{' '}
-						<Link href="/login" legacyBehavior>
-							<a>Login</a>
+						<Link href="/login" id="login_link">
+							Login
 						</Link>
 					</p>
 				</form>

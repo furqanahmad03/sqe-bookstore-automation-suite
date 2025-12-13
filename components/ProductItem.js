@@ -36,8 +36,8 @@ export default function ProductItem({ product }) {
 		<div className={Styles.book_item}>
 			<div className={Styles.book_item_body}>
 				<h3>
-					<Link href={`/books/${product.slug}`} legacyBehavior>
-						<a>{product.name}</a>
+					<Link href={`/books/${product.slug}`}>
+						{product.name}
 					</Link>
 				</h3>
 				<p className={Styles.book_author}>By {product.author}</p>

@@ -12,10 +12,8 @@ const Banner = () => {
 					<p className="description fadeInLeft">
 						Browse through the list of awesome books
 					</p>
-					<Link href="/books" legacyBehavior>
-						<a className={`${Styles.button} button fadeInLeft`}>
-							Find Books
-						</a>
+					<Link className={`${Styles.button} button fadeInLeft`} href="/books">
+						Find Books
 					</Link>
 				</div>
 			</div>

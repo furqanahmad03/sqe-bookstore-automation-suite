@@ -56,17 +56,19 @@ const Cart = () => {
 		<Layout>
 			<div className="container">
 				<div className={Styles.cart_page}>
-					<h2>Cart</h2>
+					<h2 data-testid="cart-page-title">Cart</h2>
 					{cartItems.length == 0 ? (
 						<Notice>
-							<p>
+							<p data-testid="empty-cart-message">
 								No items added in cart{' '}
-								<Link href="/">Go shopping</Link>
+								<Link href="/" data-testid="continue-shopping-link">
+									Go shopping
+								</Link>
 							</p>
 						</Notice>
 					) : (
 						<div className={Styles.cart_page_inner}>
-							<div className={Styles.cart_table}>
+							<div className={Styles.cart_table} data-testid="cart-table">
 								<table className={TableStyles.table}>
 									<thead>
 										<tr>
@@ -81,13 +83,22 @@ const Cart = () => {
 										</tr>
 									</thead>
 									<tbody>
-										{cartItems.map((item) => (
-											<tr key={item.slug}>
+										{cartItems.map((item, index) => (
+											<tr 
+												key={item.slug} 
+												data-testid={`cart-item-${index}`}
+												data-item-name={item.name}
+												data-item-slug={item.slug}
+											>
 												<td>
 													<Link
 														href={`/books/${item.slug}`}
+														data-testid={`cart-item-link-${index}`}
 													>
-														<strong>
+														<strong 
+															data-testid={`cart-item-name-${index}`}
+															className={Styles.product_name}
+														>
 															{item.name}
 														</strong>
 													</Link>
@@ -107,6 +118,7 @@ const Cart = () => {
 																	1
 															);
 														}}
+														data-testid={`decrease-quantity-${index}`}
 													>
 														-
 													</button>
@@ -114,6 +126,7 @@ const Cart = () => {
 														className={
 															Styles.cart_number
 														}
+														data-testid={`item-quantity-${index}`}
 													>
 														{item.quantity}
 													</span>
@@ -132,11 +145,12 @@ const Cart = () => {
 																	1
 															);
 														}}
+														data-testid={`increase-quantity-${index}`}
 													>
 														+
 													</button>
 												</td>
-												<td>${item.price}</td>
+												<td data-testid={`item-price-${index}`}>${item.price}</td>
 												<td>
 													<button
 														className={
@@ -147,6 +161,8 @@ const Cart = () => {
 																item.slug
 															)
 														}
+														data-testid={`remove-item-${index}`}
+														aria-label={`Remove ${item.name}`}
 													>
 														<svg
 															xmlns="http://www.w3.org/2000/svg"
@@ -173,24 +189,24 @@ const Cart = () => {
 									</tbody>
 								</table>
 							</div>
-							<div className={Styles.cart_action_block}>
+							<div className={Styles.cart_action_block} data-testid="cart-summary">
 								<div>
 									<p>
 										Quantity:{' '}
-										<strong>{TotalQuantity}</strong>
+										<strong data-testid="total-quantity">{TotalQuantity}</strong>
 									</p>
 									<p>
-										Subtotal: <strong>${TotalPrice}</strong>
+										Subtotal: <strong data-testid="total-price">${TotalPrice}</strong>
 									</p>
 								</div>
-								<button
-									className={`${Styles.checkout_button} button`}
-									onClick={() =>
-										router.push('/login?redirect=/shipping')
-									}
-								>
-									Checkout
-								</button>
+								<Link href="/login?redirect=/shipping">
+									<button
+										className={`${Styles.checkout_button} button`}
+										data-testid="checkout-button"
+									>
+										Checkout
+									</button>
+								</Link>
 							</div>
 						</div>
 					)}

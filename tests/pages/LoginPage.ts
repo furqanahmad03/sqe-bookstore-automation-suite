@@ -41,6 +41,7 @@ export class LoginPage extends BasePage {
     await this.fill(this.emailInput, 'admin@example.com');
     await this.fill(this.passwordInput, 'admin123');
     await this.click(this.loginButton);
+    await this.page.waitForTimeout(500);
     await this.page.waitForLoadState('networkidle');
   }
 

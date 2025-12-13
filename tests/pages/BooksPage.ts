@@ -8,11 +8,11 @@ export class BooksPage extends BasePage {
   // Selectors
   private searchInput = '.searchbar-input';
   private searchClearButton = '.searchbar-button';
-  private bookItems = '.book_item';
+  private bookItems = '[data-testid="book-item"]';
   private bookTitles = '.book_item h3 a';
-  private addToCartButtons = '.book_button';
+  private addToCartButtons = '[data-testid="add-to-cart"]';
   private cartLink = 'a[href="/cart"]';
-  private cartCount = '.cart_item';
+  private cartCount = '[data-testid="cart-count"]';
 
   constructor(page: Page) {
     super(page);
@@ -24,6 +24,12 @@ export class BooksPage extends BasePage {
   async goto() {
     await this.navigate('/books');
   }
+
+  async waitForCartCount(expected: number) {
+    await expect(this.page.locator(this.cartCount))
+      .toHaveText(String(expected));
+  }
+  
 
   /**
    * Search for books
@@ -69,31 +75,45 @@ export class BooksPage extends BasePage {
    * Add first available book to cart
    */
   async addFirstBookToCart() {
-    const firstButton = this.page.locator(this.addToCartButtons).first();
-    await firstButton.click();
-    await this.wait(500);
+    const button = this.page.locator(this.addToCartButtons).first();
+    await expect(button).toBeVisible();
+  
+    const before = await this.getCartCount();
+    await button.click();
+  
+    await this.waitForCartCount(before + 1);
   }
+  
 
   /**
    * Add multiple books to cart
    */
   async addMultipleBooksToCart(count: number) {
-    const buttons = await this.page.locator(this.addToCartButtons).all();
-    const booksToAdd = Math.min(count, buttons.length);
-    
-    for (let i = 0; i < booksToAdd; i++) {
-      await buttons[i].click();
-      await this.wait(300);
+    const buttons = this.page.locator(this.addToCartButtons);
+    const total = await buttons.count();
+    const toAdd = Math.min(count, total);
+  
+    const before = await this.getCartCount();
+  
+    for (let i = 0; i < toAdd; i++) {
+      await buttons.nth(i).click();
     }
+  
+    await this.waitForCartCount(before + toAdd);
   }
+  
 
   /**
    * Get cart item count
    */
   async getCartCount(): Promise<number> {
-    const cartCountText = await this.getText(this.cartCount);
-    return parseInt(cartCountText) || 0;
+    const locator = this.page.locator(this.cartCount);
+    await expect(locator).toBeVisible();
+  
+    const text = await locator.textContent();
+    return Number(text?.trim() || 0);
   }
+  
 
   /**
    * Navigate to cart

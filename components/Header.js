@@ -43,7 +43,7 @@ export default function Header() {
 									<Link href="/cart">
 											{/* Add "Styles.active" to show active state */}
 											<span>Cart</span>{' '}
-											<span className={Styles.cart_item}>
+											<span className={Styles.cart_item} data-testid="cart-count">
 												{cartNumber}
 											</span>
 									</Link>

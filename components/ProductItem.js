@@ -33,7 +33,7 @@ export default function ProductItem({ product }) {
 	};
 
 	return (
-		<div className={Styles.book_item}>
+		<div className={Styles.book_item} data-testid="book-item">
 			<div className={Styles.book_item_body}>
 				<h3>
 					<Link href={`/books/${product.slug}`}>
@@ -46,6 +46,7 @@ export default function ProductItem({ product }) {
 					<p className={Styles.book_price}>${product.price}</p>
 					<button
 						onClick={() => addToCart()}
+						data-testid="add-to-cart"
 						className={`${Styles.book_button} button`}
 						disabled={product.quantity > 0 ? '' : 'disabled'}
 					>

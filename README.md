@@ -1,584 +1,592 @@
-# 📚 Online Bookstore - Test Automation Suite
+# 📚 Book Store - E-Commerce Platform
 
-A comprehensive test automation framework for the Online Bookstore web application using Playwright and TypeScript.
+A full-stack e-commerce bookstore application built with Next.js, MongoDB, and comprehensive end-to-end testing using Playwright.
 
-[![Playwright Tests](https://github.com/furqanahmad03/bookstore-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/furqanahmad03/bookstore-automation/actions/workflows/playwright.yml)
+## 🌟 Features
 
----
+### Core Functionality
+- **User Authentication**: Secure login/registration with NextAuth.js
+- **Book Browsing**: Search and filter through available books
+- **Shopping Cart**: Add/remove items, update quantities
+- **Checkout Process**: Multi-step checkout with shipping and payment
+- **Order Management**: View order history and details
+- **Admin Dashboard**: CRUD operations for books and order management
 
-## 📋 Project Overview
+### Technical Highlights
+- **Server-Side Rendering** with Next.js
+- **RESTful API** endpoints
+- **Responsive Design** with SCSS modules
+- **Session Management** with cookies
+- **Database Integration** with MongoDB & Mongoose
+- **Form Validation** with React Hook Form
+- **Notification System** with custom provider
+- **Component-Based Architecture**
 
-This project provides complete test automation coverage for an e-commerce bookstore application built with Next.js. It includes functional testing, performance testing, security testing, and CI/CD integration.
+## 📋 Table of Contents
 
-### Features Tested
-- ✅ User Authentication (Login/Register)
-- ✅ Book Browsing & Search
-- ✅ Shopping Cart Management
-- ✅ Multi-step Checkout Process
-- ✅ Admin Dashboard (CRUD Operations)
-- ✅ Performance Metrics
-- ✅ Security Vulnerabilities
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Environment Setup](#environment-setup)
+- [Running the Application](#running-the-application)
+- [Testing](#testing)
+  - [Test Structure](#test-structure)
+  - [Running Tests](#running-tests)
+  - [Test Coverage](#test-coverage)
+  - [Page Object Model](#page-object-model)
+  - [Writing Tests](#writing-tests)
+- [Project Structure](#project-structure)
+- [API Endpoints](#api-endpoints)
+- [Database Schema](#database-schema)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
 
----
+## 🔧 Prerequisites
 
-## 🚀 Quick Start
+Before you begin, ensure you have the following installed:
 
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn
-- Running instance of the bookstore application
+- **Node.js** (v20 or higher)
+- **npm** or **yarn**
+- **MongoDB** (local installation or MongoDB Atlas account)
+- **Git**
 
-### Installation
+## 📦 Installation
 
+1. **Clone the repository**
 ```bash
-# Clone repository
-git clone https://github.com/furqanahmad03/sqe-bookstore-automation-suite.git
-cd bookstore-automation
+git clone https://github.com/yourusername/book-store.git
+cd book-store
+```
 
-# Install dependencies
+2. **Install dependencies**
+```bash
 npm install
+```
 
-# Install Playwright browsers
+3. **Install Playwright browsers**
+```bash
 npx playwright install
+```
 
-# Run tests
+## ⚙️ Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/bookstore
+NEXTAUTH_SECRET=your-secret-key-here
+NEXTAUTH_URL=http://localhost:3000
+NODE_ENV=development
+BASE_URL=http://localhost:3000
+```
+
+### Creating Test Data
+
+The application requires initial data to function properly. You can:
+
+1. **Manually create data** through the admin dashboard
+2. **Use a seed script** (create `pages/api/seed.js` - see Database Schema section)
+3. **Import sample data** directly into MongoDB
+
+### Admin User Setup
+
+Create an admin user in MongoDB:
+
+```javascript
+// In MongoDB shell or Compass
+db.users.insertOne({
+  name: "Admin User",
+  email: "admin@example.com",
+  password: "$2a$10$hashed_password_here", // Use bcrypt to hash "admin123"
+  isAdmin: true,
+  createdAt: new Date(),
+  updatedAt: new Date()
+})
+```
+
+## 🚀 Running the Application
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000)
+
+### Production Mode
+
+```bash
+# Build the application
+npm run build
+
+# Start production server
+npm run start
+```
+
+### Using Docker
+
+```bash
+# Build and run with Docker Compose
+docker-compose up
+
+# Run tests in Docker
+docker-compose run tests
+```
+
+## 🧪 Testing
+
+This project includes a comprehensive end-to-end testing suite using Playwright with 50+ test cases covering all major functionality.
+
+### Test Structure
+
+```
+tests/
+├── auth.spec.ts           # Authentication tests (10 tests)
+├── books.spec.ts          # Book browsing tests (10 tests)
+├── cart.spec.ts           # Shopping cart tests (11 tests)
+├── checkout.spec.ts       # Checkout flow tests (17 tests)
+├── dashboard.spec.ts      # Admin dashboard tests (11 tests)
+├── pages/                 # Page Object Models
+│   ├── BasePage.ts        # Base class with common methods
+│   ├── LoginPage.ts       # Login page object
+│   ├── RegisterPage.ts    # Registration page object
+│   ├── BooksPage.ts       # Books page object
+│   ├── CartPage.ts        # Cart page object
+│   ├── CheckoutPage.ts    # Checkout page object
+│   └── AdminPage.ts       # Admin dashboard object
+└── playwright.config.ts   # Playwright configuration
+```
+
+### Test Categories
+
+Tests are organized with tags for selective execution:
+
+- **`@smoke`**: Critical path tests (quick validation)
+- **`@functional`**: Feature-specific tests
+- **`@regression`**: Full regression suite
+- **`@security`**: Security-related tests
+
+### Running Tests
+
+#### Run All Tests
+```bash
 npm test
+# or
+npm run test:e2e
 ```
 
-### First Time Setup
-
-1. **Update Configuration**
-   ```typescript
-   // playwright.config.ts
-   baseURL: 'http://localhost:3000'  // Change to your app URL
-   ```
-
-2. **Create Test Users** in your database:
-   - Regular user: `test@example.com` / `password123`
-   - Admin user: `admin@example.com` / `admin123`
-
-3. **Update Selectors** in `tests/pages/*.ts` to match your HTML
-
-4. **Run Interactive Tests**
-   ```bash
-   npm run test:ui
-   ```
-
----
-
-## 📂 Project Structure
-
-```
-bookstore-automation/
-├── tests/
-│   ├── pages/                    # Page Object Models
-│   │   ├── BasePage.ts          # Base page functionality
-│   │   ├── LoginPage.ts         # Login interactions
-│   │   ├── RegisterPage.ts      # Registration
-│   │   ├── BooksPage.ts         # Book browsing
-│   │   ├── CartPage.ts          # Shopping cart
-│   │   ├── CheckoutPage.ts      # Checkout process
-│   │   └── AdminPage.ts         # Admin dashboard
-│   ├── auth.spec.ts             # Authentication tests (10)
-│   ├── books.spec.ts            # Books tests (10)
-│   ├── cart.spec.ts             # Cart tests (10)
-│   ├── checkout.spec.ts         # Checkout tests (12)
-│   ├── admin.spec.ts            # Admin tests (10)
-│   ├── performance/
-│   │   └── performance-tests.ts # Performance testing
-│   └── security/
-│       └── security-tests.ts    # Security testing
-├── playwright-report/            # HTML test reports
-├── test-results/                 # Test artifacts
-├── .github/workflows/
-│   └── playwright.yml           # CI/CD pipeline
-├── playwright.config.ts         # Playwright configuration
-├── package.json                 # Dependencies
-├── TEST_CASES.md                # Test cases documentation
-├── EXECUTION_REPORT.md          # Execution report template
-└── README.md                    # This file
-```
-
----
-
-## 🧪 Running Tests
-
-### All Tests
+#### Run Specific Test Suites
 ```bash
-npm test                    # Run all tests
-npm run test:headed         # Run with visible browser
-npm run test:ui             # Interactive UI mode (recommended)
-npm run test:debug          # Debug mode
+# Authentication tests
+npm run test:auth
+
+# Book browsing tests
+npm run test:books
+
+# Shopping cart tests
+npm run test:cart
+
+# Checkout flow tests
+npm run test:checkout
+
+# Admin dashboard tests
+npm run test:admin
 ```
 
-### Specific Test Suites
+#### Run Tests by Tag
 ```bash
-npm run test:auth           # Authentication tests
-npm run test:books          # Books management
-npm run test:cart           # Shopping cart
-npm run test:checkout       # Checkout process
-npm run test:admin          # Admin dashboard
+# Run only smoke tests
+npm run test:smoke
+
+# Run functional tests
+npm run test:functional
+
+# Run regression tests
+npm run test:regression
 ```
 
-### By Test Type
+#### Run Tests in Different Browsers
 ```bash
-npm run test:smoke          # Smoke tests (critical path)
-npm run test:functional     # Functional tests
-npm run test:regression     # Regression suite
+# Chromium only
+npm run test:chromium
+
+# Mobile browsers
+npm run test:mobile
 ```
 
-### Browser-Specific
+#### Interactive Testing
 ```bash
-npm run test:chromium       # Chrome/Chromium
-npm run test:firefox        # Firefox
-npm run test:webkit         # Safari
-npm run test:mobile         # Mobile browsers
+# Run tests in headed mode (see browser)
+npm run test:headed
+
+# Run tests in UI mode (interactive)
+npm run test:ui
+
+# Debug mode (step through tests)
+npm run test:debug
+
+# Generate tests using codegen
+npm run codegen
 ```
 
-### Performance & Security
-```bash
-npm run test:performance    # Performance metrics
-npm run test:security       # Security checks
-npm run test:all            # Everything including perf & security
-```
+### Test Reports
 
----
+After running tests, view the HTML report:
 
-## 📊 Test Reports
-
-### View HTML Report
 ```bash
 npm run report
 ```
 
-The report includes:
-- Test execution timeline
-- Pass/fail statistics
-- Error screenshots
-- Failure videos
-- Detailed test logs
+Reports are generated in the `playwright-report/` directory with:
+- Screenshots of failures
+- Video recordings of failed tests
+- Detailed test execution logs
+- Performance metrics
 
-### Report Locations
-```
-playwright-report/index.html      # Main HTML report
-test-results/results.json         # JSON results
-test-results/junit.xml            # JUnit format
-test-results/screenshots/         # Failure screenshots
-test-results/videos/              # Failure videos
-```
+### Test Coverage
 
----
+#### Authentication Tests (TC-AUTH-001 to TC-AUTH-010)
+- ✅ User registration with valid data
+- ✅ Password mismatch validation
+- ✅ Email format validation
+- ✅ Password length validation
+- ✅ User login with valid credentials
+- ✅ Invalid credentials handling
+- ✅ Empty field validation
+- ✅ Navigation between pages
+- ✅ Password masking
+- ✅ Session persistence
 
-## 🎯 Test Coverage
+#### Books Tests (TC-BOOKS-001 to TC-BOOKS-010)
+- ✅ Display books list
+- ✅ Search functionality
+- ✅ No results handling
+- ✅ Clear search filter
+- ✅ Add single book to cart
+- ✅ Add multiple books to cart
+- ✅ View book details
+- ✅ Book information accuracy
+- ✅ Responsive design
+- ✅ Add to cart notification
 
-### Test Metrics
-- **Total Test Cases:** 52
-- **Smoke Tests:** 12 (critical path)
-- **Functional Tests:** 40
-- **Regression Tests:** 15
-- **Performance Tests:** 5
-- **Security Tests:** 5
+#### Cart Tests (TC-CART-001 to TC-CART-011)
+- ✅ View cart with items
+- ✅ View empty cart
+- ✅ Update quantity (increase/decrease)
+- ✅ Calculate total price
+- ✅ Proceed to checkout
+- ✅ Cart persistence across tabs
+- ✅ Remove items from cart
+- ✅ Display item information
+- ✅ Quantity button functionality
+- ✅ Item link navigation
 
-### Coverage by Module
+#### Checkout Tests (TC-CHECKOUT-001 to TC-CHECKOUT-017)
+- ✅ Fill shipping address form
+- ✅ Shipping validation errors
+- ✅ Persist shipping data
+- ✅ Select payment methods (PayPal, Stripe, Cash on Delivery)
+- ✅ Navigation between checkout steps
+- ✅ Display order summary
+- ✅ Edit shipping/payment from review
+- ✅ Complete order placement
+- ✅ Price calculations
+- ✅ End-to-end checkout flows
 
-| Module | Test Cases | Status |
-|--------|-----------|--------|
-| Authentication | 10 | ✅ |
-| Books Management | 10 | ✅ |
-| Shopping Cart | 10 | ✅ |
-| Checkout Process | 12 | ✅ |
-| Admin Dashboard | 10 | ✅ |
-| Performance | 5 | ✅ |
-| Security | 5 | ✅ |
+#### Admin Dashboard Tests (TC-ADMIN-001 to TC-ADMIN-011)
+- ✅ Access dashboard as admin
+- ✅ Access control for non-admin users
+- ✅ View dashboard statistics
+- ✅ Add new book with validation
+- ✅ Edit existing book
+- ✅ Delete book with confirmation
+- ✅ Navigate between tabs
+- ✅ View all orders
+- ✅ Book form validation
+- ✅ Cancel form operations
 
-### Browser Support
-- ✅ Chrome/Chromium
-- ✅ Firefox
-- ✅ Safari/WebKit
-- ✅ Mobile Chrome
-- ✅ Mobile Safari
+### Page Object Model
 
----
+The project uses the Page Object Model (POM) pattern for maintainable test code:
 
-## 🔧 Configuration
+#### BasePage
+Common methods inherited by all page objects:
+- Navigation helpers
+- Element interaction methods
+- Wait utilities
+- Screenshot capture
+- URL verification
 
-### Environment Variables
-
-Create `.env` file (optional):
-```env
-BASE_URL=http://localhost:3000
-TEST_USER_EMAIL=test@example.com
-TEST_USER_PASSWORD=password123
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=admin123
-```
-
-### Playwright Configuration
-
-Key settings in `playwright.config.ts`:
-```typescript
-{
-  testDir: './tests',
-  timeout: 30000,
-  retries: 2,  // On CI
-  workers: 4,  // Parallel execution
-  reporter: [
-    ['html'],
-    ['json'],
-    ['junit']
-  ]
-}
-```
-
----
-
-## 🔄 CI/CD Integration
-
-### GitHub Actions
-
-Tests run automatically on:
-- Push to main/master/develop
-- Pull requests
-- Daily schedule (2 AM UTC)
-- Manual trigger
-
-### Pipeline Jobs
-1. **Desktop Tests** - Chrome, Firefox, Safari
-2. **Mobile Tests** - Mobile Chrome, Mobile Safari
-3. **Performance Tests** - Load times, metrics
-4. **Security Tests** - Vulnerabilities
-5. **Deploy Reports** - GitHub Pages (optional)
-
-### Setting Up CI/CD
-
-1. Push code to GitHub
-2. GitHub Actions auto-detects workflow
-3. View results in "Actions" tab
-4. Reports available as artifacts
-
-### Enable GitHub Pages (Optional)
-1. Go to repository Settings → Pages
-2. Source: GitHub Actions
-3. Reports available at: `https://YOUR_USERNAME.github.io/YOUR_REPO/`
-
----
-
-## 📝 Test Case Documentation
-
-Detailed test cases are documented in [TEST_CASES.md](TEST_CASES.md)
-
-Each test case includes:
-- Test ID and priority
-- Preconditions
-- Step-by-step execution
-- Expected results
-- Test data
-
-Example:
-```markdown
-### TC-AUTH-001: User Registration with Valid Data
-- **Priority:** Critical
-- **Type:** @smoke @functional
-- **Steps:**
-  1. Navigate to /register
-  2. Enter valid user details
-  3. Submit form
-- **Expected:** User created successfully
-```
-
----
-
-## 🛡️ Security Testing
-
-Security tests cover:
-- ✅ SQL Injection prevention
-- ✅ XSS (Cross-Site Scripting) prevention
-- ✅ CSRF protection
-- ✅ Security headers validation
-- ✅ Password hashing verification
-
-Run security tests:
-```bash
-npm run test:security
-```
-
----
-
-## ⚡ Performance Testing
-
-Performance metrics tested:
-- Page load times
-- First Contentful Paint (FCP)
-- Time to Interactive (TTI)
-- Resource usage
-- API response times
-
-Thresholds:
-- Page load: < 3s
-- FCP: < 1.5s
-- API response: < 500ms
-
-Run performance tests:
-```bash
-npm run test:performance
-```
-
----
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**1. Element Not Found**
-```bash
-# Use codegen to find correct selectors
-npm run codegen
-```
-
-**2. Timeout Errors**
-```typescript
-// Increase timeout in playwright.config.ts
-timeout: 60 * 1000
-```
-
-**3. Login Failures**
-- Verify test users exist in database
-- Check credentials in test files
-- Ensure passwords are bcrypt hashed
-
-**4. Port Already in Use**
-```bash
-# Kill process on port 3000
-lsof -ti:3000 | xargs kill -9
-```
-
-**5. Selector Changes**
-- Update Page Object Models when HTML changes
-- Use stable selectors (IDs preferred)
-- Avoid class-based selectors
-
-### Debug Mode
-
-```bash
-# Step through tests
-npm run test:debug
-
-# Run single test
-npx playwright test tests/auth.spec.ts:10 --debug
-
-# Show trace viewer
-npx playwright show-trace trace.zip
-```
-
----
-
-## 🎓 Page Object Model
-
-### Design Pattern
-
-All pages inherit from `BasePage`:
+#### Example Usage
 
 ```typescript
-// BasePage.ts - Common functionality
-export class BasePage {
-  async navigate(path: string) { }
-  async click(selector: string) { }
-  async fill(selector: string, value: string) { }
-  async getText(selector: string) { }
-}
+import { LoginPage } from './pages/LoginPage';
+import { BooksPage } from './pages/BooksPage';
 
-// LoginPage.ts - Specific functionality
-export class LoginPage extends BasePage {
-  private emailInput = '#email';
-  private passwordInput = '#password';
+test('User can browse and add books to cart', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  const booksPage = new BooksPage(page);
   
-  async login(email: string, password: string) {
-    await this.fill(this.emailInput, email);
-    await this.fill(this.passwordInput, password);
-    await this.click('button[type="submit"]');
-  }
-}
+  // Login
+  await loginPage.goto();
+  await loginPage.login('test@example.com', 'password123');
+  
+  // Browse books
+  await booksPage.goto();
+  await booksPage.searchBooks('Harry Potter');
+  
+  // Add to cart
+  await booksPage.addFirstBookToCart();
+  
+  // Verify
+  const cartCount = await booksPage.getCartCount();
+  expect(cartCount).toBeGreaterThan(0);
+});
 ```
 
-### Benefits
-- ✅ Reusable code
-- ✅ Easy maintenance
-- ✅ Readable tests
-- ✅ Single point of change
+### Writing Tests
 
----
+#### Test Structure Guidelines
 
-## 📈 Test Execution Report
+1. **Use descriptive test names** with test case IDs:
+```typescript
+test('TC-AUTH-001: User registration with valid data @smoke', async ({ page }) => {
+  // Test implementation
+});
+```
 
-After running tests, generate execution report:
+2. **Follow AAA pattern** (Arrange, Act, Assert):
+```typescript
+test('Add book to cart', async ({ page }) => {
+  // Arrange
+  const booksPage = new BooksPage(page);
+  await booksPage.goto();
+  
+  // Act
+  await booksPage.addFirstBookToCart();
+  
+  // Assert
+  const cartCount = await booksPage.getCartCount();
+  expect(cartCount).toBe(1);
+});
+```
 
-1. Run tests: `npm test`
-2. Generate report: `npm run report`
-3. Fill template: `EXECUTION_REPORT.md`
-4. Include:
-   - Test summary
-   - Pass/fail statistics
-   - Browser compatibility results
-   - Performance metrics
-   - Security findings
-   - Screenshots
+3. **Use data-testid selectors** for reliability:
+```typescript
+// Good
+await page.locator('[data-testid="add-to-cart"]').click();
 
----
+// Avoid
+await page.locator('.book_button').click();
+```
+
+4. **Clean up after tests** when necessary:
+```typescript
+test.afterEach(async ({ page }) => {
+  // Clear cart, logout, etc.
+});
+```
+
+### CI/CD Integration
+
+#### GitHub Actions Example
+
+```yaml
+name: E2E Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Run tests
+        run: npm test
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report/
+```
+
+## 📁 Project Structure
+
+```
+book-store/
+├── components/           # React components
+│   ├── Banner.js
+│   ├── CheckoutProgress.js
+│   ├── ConfirmModal.js
+│   ├── DropdownMenu.js
+│   ├── Header.js
+│   ├── Layout.js
+│   ├── Notice.js
+│   ├── Notification.js
+│   ├── NotificationProvider.js
+│   └── ProductItem.js
+├── models/              # MongoDB models
+│   ├── Order.js
+│   ├── Product.js
+│   └── User.js
+├── pages/               # Next.js pages
+│   ├── api/            # API routes
+│   │   ├── admin/      # Admin endpoints
+│   │   ├── auth/       # Authentication
+│   │   ├── orders/     # Order management
+│   │   └── product/    # Product endpoints
+│   ├── books/          # Book pages
+│   ├── order/          # Order pages
+│   ├── cart.js
+│   ├── dashboard.js    # Admin dashboard
+│   ├── login.js
+│   ├── payment.js
+│   ├── placeorder.js
+│   ├── profile.js
+│   ├── register.js
+│   ├── shipping.js
+│   └── _app.js
+├── tests/               # E2E tests
+│   ├── pages/          # Page Object Models
+│   ├── auth.spec.ts
+│   ├── books.spec.ts
+│   ├── cart.spec.ts
+│   ├── checkout.spec.ts
+│   └── dashboard.spec.ts
+├── utils/               # Utility functions
+│   ├── db.js           # Database connection
+│   └── Store.js        # Global state management
+├── styles/              # SCSS styles
+├── public/              # Static assets
+├── .env                 # Environment variables
+├── .gitignore
+├── package.json
+├── playwright.config.ts
+└── README.md
+```
+
+## 🔌 API Endpoints
+
+### Authentication
+- `POST /api/auth/signup` - Register new user
+- `POST /api/auth/[...nextauth]` - NextAuth.js endpoints
+- `POST /api/auth/update` - Update user profile
+
+### Products
+- `GET /api/products` - Get all products
+- `GET /api/product/[id]` - Get product by ID
+
+### Orders
+- `POST /api/orders` - Create new order
+- `GET /api/orders/[id]` - Get order by ID
+- `GET /api/orders/history` - Get user's order history
+
+### Admin
+- `GET /api/admin/products` - Get all products (admin)
+- `POST /api/admin/products` - Create new product
+- `GET /api/admin/products/[id]` - Get product details
+- `PUT /api/admin/products/[id]` - Update product
+- `DELETE /api/admin/products/[id]` - Delete product
+- `GET /api/admin/orders` - Get all orders (admin)
+
+
+## 🚢 Deployment
+
+### Vercel Deployment
+
+1. **Push to GitHub**
+```bash
+git push origin main
+```
+
+2. **Import in Vercel**
+- Go to [vercel.com](https://vercel.com)
+- Import your GitHub repository
+- Add environment variables
+- Deploy
 
 ## 🤝 Contributing
 
-### Adding New Tests
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-1. Create test file in `tests/`:
-   ```typescript
-   // tests/newfeature.spec.ts
-   import { test, expect } from '@playwright/test';
-   
-   test.describe('New Feature Tests', () => {
-     test('should work correctly', async ({ page }) => {
-       // Test implementation
-     });
-   });
-   ```
+### Contribution Guidelines
 
-2. Add to test commands in `package.json`
+- Write tests for new features
+- Maintain code style consistency
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
+- Add appropriate test tags (@smoke, @functional, @regression)
 
-3. Update documentation
+## 📝 License
 
-### Best Practices
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Use Page Object Model
-- Add descriptive test names
-- Include test IDs (TC-XXX-001)
-- Tag tests (@smoke, @functional, @regression)
-- Keep tests independent
-- Clean up test data
-- Add meaningful assertions
+## 👨‍💻 Author
 
----
+**Furqan Ahmad**
 
-## 📚 Documentation
+- Website: [furqanahmad.me](https://furqanahmad.me/)
+- GitHub: [@furqanahmad03](https://github.com/furqanahmad03)
 
-- **[COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)** - Detailed setup instructions
-- **[TEST_CASES.md](TEST_CASES.md)** - All test cases documented
-- **[EXECUTION_REPORT.md](EXECUTION_REPORT.md)** - Execution report template
-- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick command reference
+## 🙏 Acknowledgments
 
----
-
-## 🛠️ Tech Stack
-
-- **Test Framework:** Playwright 1.40+
-- **Language:** TypeScript 5.3+
-- **Runtime:** Node.js 18+
-- **CI/CD:** GitHub Actions
-- **Reporting:** HTML, JSON, JUnit
-- **Additional Tools:** Lighthouse, Axios
-
----
-
-## 📊 Assignment Deliverables
-
-This project includes all required SQE assignment deliverables:
-
-### ✅ Implementation (40 points)
-- Framework setup and configuration
-- 50+ automated test cases
-- Page Object Model implementation
-- Complete feature coverage
-
-### ✅ Documentation (60 points)
-- Test cases document (TEST_CASES.md)
-- Execution reports with evidence
-- Automation scripts documentation
-- Performance metrics and analysis
-- Security testing results
-
-### ✅ CI/CD Integration
-- GitHub Actions workflow
-- Automated test execution
-- Multi-browser testing
-- Report generation and deployment
-
----
+- Next.js team for the amazing framework
+- Playwright team for the testing framework
+- MongoDB for the database
+- All contributors and users
 
 ## 📞 Support
 
-For issues or questions:
-1. Check [COMPLETE_SETUP_GUIDE.md](COMPLETE_SETUP_GUIDE.md)
-2. Review [Playwright documentation](https://playwright.dev/)
-3. Check test error messages and screenshots
-4. Use debug mode: `npm run test:debug`
+For support, email hfurqan.se@gmail.com or open an issue in the GitHub repository.
+
+## 📊 Performance Metrics
+
+The application is optimized for:
+- First Contentful Paint: < 1.5s
+- Time to Interactive: < 3.0s
+- Largest Contentful Paint: < 2.5s
+- Cumulative Layout Shift: < 0.1
+
+## 🧩 Technologies Used
+
+### Frontend
+- Next.js 16.0
+- React 19.2
+- SCSS Modules
+- React Hook Form
+- Context API for state management
+
+### Backend
+- Next.js API Routes
+- NextAuth.js for authentication
+- MongoDB with Mongoose
+- bcryptjs for password hashing
+
+### Testing
+- Playwright 1.57
+- Page Object Model pattern
+- TypeScript for type safety
+
+### DevOps
+- Docker & Docker Compose
+- GitHub Actions (CI/CD ready)
+- Vercel deployment
 
 ---
 
-## 📄 License
+**Happy coding! 🎉**
 
-MIT License - See [LICENSE](LICENSE) file for details
-
----
-
-## 👤 Author
-
-**[Your Name]**
-- University: [Your University]
-- Course: Software Quality Engineering
-- Assignment: Test Automation Suite
-- Date: December 2024
-
----
-
-## 🏆 Success Criteria
-
-### Project Completion Checklist
-- [x] All test suites implemented
-- [x] Page Object Model structure
-- [x] 50+ test cases documented
-- [x] CI/CD pipeline configured
-- [x] Performance testing included
-- [x] Security testing included
-- [x] Complete documentation
-- [x] HTML reports generated
-
-### Test Execution
-- [x] Smoke tests passing (critical path)
-- [x] Functional tests > 80% pass rate
-- [x] Cross-browser compatibility verified
-- [x] Mobile responsiveness tested
-- [x] Performance benchmarks met
-- [x] Security checks passing
-
----
-
-## 🎯 Project Statistics
-
-```
-Total Lines of Code: 3,000+
-Test Coverage: 100% of features
-Test Cases: 52
-Page Objects: 7
-Browsers Tested: 5
-Execution Time: ~5-10 minutes
-Success Rate: >95%
-```
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] Visual regression testing
-- [ ] API testing integration
-- [ ] Database validation
-- [ ] Accessibility testing (WCAG)
-- [ ] Load testing (K6/JMeter)
-- [ ] Email testing
-- [ ] PDF report generation
-- [ ] Slack notifications
-- [ ] Test data management
-- [ ] Parallel execution optimization
-
----
-
-**Built with ❤️ for Software Quality Engineering**
-
-*Last Updated: December 2024*
+If you find this project helpful, please consider giving it a ⭐ on GitHub!
